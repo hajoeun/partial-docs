@@ -1,96 +1,65 @@
-/*body {*/
-  /*background-color: whitesmoke;*/
-/*}*/
 
-/*!*sidebar styles*!*/
-/*#bar_wrapper {*/
-  /*background-color: white;*/
-  /*position: fixed;*/
-  /*top: 0;*/
-  /*left: 0;*/
-  /*bottom: 0px;*/
-  /*width: 280px;*/
-  /*height: 100%;*/
-  /*overflow-y: auto;*/
-  /*overflow-x: hidden;*/
-  /*border-right: 1px solid rgba(0, 0, 0, 0.14);*/
-  /*!*box-sizing: border-box;*!*/
-/*}*/
 
-/*#logo {*/
-  /*padding: 15px 30px 0 30px;*/
-/*}*/
+/* side bar */
+#sidebar {
+  padding: 5px 30px;
 
-/*#list_bar {*/
-  /*padding: 10px 30px 30px 30px;*/
-/*}*/
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0px;
+  width: 200px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: 1px solid rgba(0, 0, 0, 0.14);
+  /*box-sizing: border-box;*/
+}
 
-/*#list_bar ul {*/
+#sidebar #logo {
+
+}
+
+#sidebar #listbar {
+  /*background-color: #1abc9c;*/
+}
+#sidebar #listbar ul {
+  /*background-color: #66d9ef;*/
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#grouplist > li > .gr_title {
+  font-size: 24px;
+}
+
+#grouplist a {
+  text-decoration: none;
+}
+
+
+/*#sidebar #listbar ul#funclist li {*/
   /*list-style: none;*/
-  /*font-size: 15px;*/
-  /*padding-left: 13px;*/
 /*}*/
 
-/*#list_bar li {*/
-  /*display: list-item;*/
-/*}*/
-
-/*#list_bar a {*/
-  /*color: black;*/
-/*}*/
-
-/*#about_us {*/
-  /*border-top: 1px solid #e0e0e0;*/
-  /*font-size: 13px;*/
-  /*height: 96px;*/
-  /*line-height: 24px;*/
-  /*padding: 15px 30px 30px 30px;*/
-/*}*/
-
-/*#about_us ul {*/
-  /*padding: 0;*/
-/*}*/
-
-/*#about_us li {*/
-  /*display: inline-block;*/
-/*}*/
-
-/*#about_us li:not(:last-child) {*/
-  /*padding: 0 10px 0 0;*/
-/*}*/
+#sidebar #about {
 
 
-/*!*section styles*!*/
-/*.container {*/
-  /*padding: 0 0 0 300px;*/
-  /*width: 100%;*/
-/*}*/
+}
 
-/*#section_container {*/
-  /*!*width: 600px;*!*/
-/*}*/
 
-/*#section_container code {*/
-  /*color: #333;*/
-  /*background-color: #fff;*/
-  /*font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;*/
-/*}*/
+/* container */
 
-/*#section_container small {*/
-  /*font-size: 60%;*/
-  /*padding-left: 10px;*/
-  /*font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;*/
-/*}*/
+#container {
+  padding: 0 0 0 300px;
+  width: 100%;
 
-/*.outer_section {*/
-  /*width: 680px;*/
-  /*padding: 20px 50px;*/
-  /*margin: 30px 0 30px 0;*/
-  /*background-color : whitesmoke;*/
-  /*border-bottom: 1px solid gainsboro;*/
-/*}*/
 
-/*.inner_section {*/
-  /*padding: 20px 10px 20px 10px;*/
-  /*border-top: 1px solid gainsboro;*/
-/*}*/
+  /*지울꺼*/
+  background-color: lightgoldenrodyellow;
+  height: 1000px;
+}
+
+
