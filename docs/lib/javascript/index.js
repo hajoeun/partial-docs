@@ -65,6 +65,23 @@ var async = ["async", "Pipe", "Indent", "pipe", "pipec", "pipea", "pipea2", "cb"
   "Template.each", "template.each", "String.each", "string.each"];
 */
 
+var func_ary = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2"];
+var coll_ary = ["each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter"];
+var array_ary = ["indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex"];
+var obj_ary = ["isArray", "isMatch", "isEmpty", "isElement", "isEqual"];
+var util_ary = ["escape", "unescape", "uniqueId"];
+var tem_ary = ["Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
+  "Template.each", "template.each", "String.each", "string.each"];
+
+var sync = {
+  //pipe_ary: pipe_ary,
+  func_ary : func_ary,
+  coll_ary: coll_ary,
+  array_ary: array_ary,
+  obj_ary: obj_ary,
+  util_ary: util_ary,
+  tem_ary: tem_ary
+};
 
 
 //// sync 그리기
@@ -78,22 +95,42 @@ console.log(_.pipe(ary, _.T.each("d", "    h3 {{d}}")));
 
 var make_list = _.T.each("d", "  li {{d}}");
 var make_funcs_sidebar = _.T.each('d', '\
-  li\
-    a[href=#{{d}}] _.{{d}}');
+  a[href=#{{d}}]\
+    li _.{{d}}'); // a랑 li랑 바꿔봄
 
-_.pipe(sync,
-  _.T('funcs', '\
+console.log(func_ary);
+_.pipe(func_ary,
+  _.T('func_ary', '\
   div#sidebar\
     div#logo\
       h1 Partial JS\
+    div#search\
+        input[type="text" placeholder="Search function"]\
     div#listbar\
-      div#search\
-        input[type="text" placeholder="입력하세요."]\
-      ul#grouplist\
-        li\
-          span.gr_title sync\
-          ul#synclist\
-            {{make_funcs_sidebar(funcs)}}\
+      div.grouplist\
+        span.gr_title Function\
+        ul#functionlist.funclist\
+          {{make_funcs_sidebar(func_ary)}}\
+      div.grouplist\
+        span.gr_title Collection\
+        ul#collectionlist.funclist\
+          {{make_funcs_sidebar(coll_ary)}}\
+      div.grouplist\
+        span.gr_title Array\
+        ul#arraylist.funclist\
+          {{make_funcs_sidebar(array_ary)}}\
+      div.grouplist\
+        span.gr_title Object\
+        ul#objectlist.funclist\
+          {{make_funcs_sidebar(obj_ary)}}\
+      div.grouplist\
+        span.gr_title Utility\
+        ul#utilitylist.funclist\
+          {{make_funcs_sidebar(util_ary)}}\
+      div.grouplist\
+        span.gr_title Template\
+        ul#templatelist.funclist\
+          {{make_funcs_sidebar(tem_ary)}}\
     div#about\
       p Marpple ©\
       ul\
@@ -104,6 +141,19 @@ _.pipe(sync,
         li\
           a[href=""] Book\
   div#container\
+    div#section_container\
+      div.box#function\
+        h2 Function\
+      div.box#collection\
+        h2 Collection \
+      div.box#array\
+        h2 Array\
+      div.box#object\
+        h2 Object\
+      div.box#utility\
+        h2 Utility\
+      div.box#template\
+        h2 Template\
   '),
   $,
   _.partial(_.method, _, 'appendTo', $('body'))
@@ -344,3 +394,45 @@ _.pipe(sync,
    });
 
  });
+
+function update_section_list(str) {
+
+
+  // 공통 2줄
+  if (!str) return $('#listbar li').show();
+  var reg = new RegExp(str, "i");
+
+
+  var $list = $('#listbar li');
+  console.log($list);
+  _.each($list, function(li) {
+    console.log(li, li.innerText);
+    li.innerText.match(reg) ? $(li).show() : $(li).hide();
+  });
+
+  //_.each(sync, function(key) {
+  //  _.each(sync[key], function(v) {
+  //    li.innerText.match(reg) ? $li.show() : $li.hide();
+  //  });
+  //});
+
+
+  ////////////////////////////////////////////////
+// 이거 다시 살려야댐 ㅜㅜ
+
+  //var $func_li = C.filter($('ul.func_list > li'), function(func){
+  //  return $(func).attr('data').match(reg) ? !$('ul.func_list > li').show() : true;
+  //});
+  //
+  //C.each($func_li, function(li) {
+  //  var $li = $(li);
+  //  if (!li.innerText.match(reg)) return $li.hide();
+  //
+  //  var $methods = $li.children('.method_list').children('li');
+  //  C.each($methods, function(m) {
+  //    m.innerText.match(reg) ? $(m).show() : $(m).hide();
+  //  });
+  //
+  //  return $li.show();
+  //});
+}

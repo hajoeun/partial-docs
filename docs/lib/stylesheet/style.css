@@ -21,8 +21,16 @@
 
 }
 
+#sidebar input {
+  outline-style: none;
+  font-size: 14px;
+  padding: 5px;
+}
+
 #sidebar #listbar {
   /*background-color: #1abc9c;*/
+  margin-top : 15px;
+
 }
 #sidebar #listbar ul {
   /*background-color: #66d9ef;*/
@@ -31,13 +39,23 @@
   padding: 0;
 }
 
-#grouplist > li > .gr_title {
+#listbar .gr_title {
   font-size: 24px;
+  font-weight: bold;
 }
 
-#grouplist a {
-  text-decoration: none;
+#listbar a:hover {
+  /*text-decoration: underline;*/
+  font-weight: bold;
 }
+
+
+#listbar a {
+  text-decoration: none;
+  color: black;
+  cursor: hand;
+}
+
 
 
 /*#sidebar #listbar ul#funclist li {*/
@@ -50,6 +68,16 @@
 }
 
 
+#about ul {
+  padding: 0px;
+}
+#about li {
+  display: inline;
+  /*text-align: match-parent;*/
+  margin: 5px;
+}
+
+
 /* container */
 
 #container {
@@ -58,8 +86,10 @@
 
 
   /*지울꺼*/
-  background-color: lightgoldenrodyellow;
   height: 1000px;
 }
 
-
+/* 지우개 */
+div {
+  border: 1px grey solid;
+}
