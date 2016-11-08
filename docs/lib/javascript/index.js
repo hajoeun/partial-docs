@@ -1,165 +1,194 @@
+/* General functions */ var test;
+var make_list = _.T.each("d", "  li {{d}}");
+var make_funcs_sidebar = _.T.each('d', '  a[href=#{{d}}]    li _.{{d}}'); // a랑 li랑 바꿔봄
+var make_section = function(section_data) { return _.T('', reduce_section_data(section_data))(); };
 
-//var funcs = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2",
-//  "mr", "to_mr", "is_mr", "Pipe", "Indent", "Tap", "Err", "async", "callback", "cb", "noop", "this",
-//  "identity", "i", "args0", "args1", "args2", "args3", "args4", "args5",
-//  "Always", "true", "false", "null", "not", "nnot", "log", "loge", "Hi", "f", "val",
-//  "isArguments", "isFunction", "isString", "isNumber", "isDate", "isRegExp", "isError", "isObject", "has", "isArrayLike",
-//  "rest", "values", "toArray", "object", "escape", "unescape", "uniqueId", "clone",
-//  "isArray", "isMatch", "isEmpty", "isElement", "isEqual",
-//  "keys", "wrapArray", "parseInt", "Lambda", "extend", "defaults", "flatten", "method", "set", "unset", "remove", "pop", "shift", "push", "unshift", "removeByIndex", "select", "sel",
-//  "notice", //?
-//  "each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter", "where", "find_where", "findWhere", "reject", "every", "some", "contains", "invoke", "pluck",
-//  "max", "min", "sortBy", "groupBy", "indexBy", "countBy", "shuffle", "random", "sample", "size", "partition", "take", "head",
-//  "first", "initial", "last", "compact", "without", "union", "intersection", "difference", "uniq", "zip", "unzip",
-//  "indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex", "range", "mapObject", "pairs", "invert", "functions", "findKey",
-//  "pick", "omit", "all", "spread", "memoize", "delay", "defer", "negate", "after", "before", "once",
-//  "Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
-//  "Template.each", "template.each", "String.each", "string.each"
-//];
+function reduce_section_data(section_data) {
+  return _.reduce(_.keys(section_data), function(memo, key) {
+    var section_values = _.values(section_data[key]);
+    var group = section_values[0],
+        funcs = section_values[1];
 
-
-var funcs = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2",
-  "mr", "to_mr", "is_mr", "Pipe", "Indent", "Tap", "Err", "async", "callback", "cb", "noop", "this",
-  "identity", "i", "args0", "args1", "args2", "args3", "args4", "args5",
-  "constant", "always", "Always", "true", "false", "null", "not", "nnot", "log", "loge", "Hi", "f", "val", "isArguments", "is_arguments", "isFunction", "is_function", "isString", "is_string", "isNumber", "is_number", "isDate", "is_date", "isRegExp", "is_regexp", "isError", "is_error", "isObject", "is_object", "has", "isArrayLike", "is_array_like", "rest", "values", "toArray", "to_array", "object", "escape", "unescape", "uniqueId", "unique_id", "clone", "isArray", "is_array", "isMatch", "is_match", "isEmpty", "is_empty", "isElement", "is_element", "isEqual", "is_equal", "keys", "wrap_arr", "wrapArray", "parse_int", "parseInt", "Lambda", "extend", "defaults", "flatten", "method", "set", "unset", "remove", "pop", "shift", "push", "unshift", "removeByIndex", "select", "sel", "notice", "Noti", "noti", "each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter", "where", "find_where", "findWhere", "reject", "every", "some", "contains", "invoke", "pluck", "max", "min", "sort_by", "sortBy", "group_by", "groupBy", "index_by", "indexBy", "count_by", "countBy", "shuffle", "random", "sample", "size", "partition", "take", "head", "first", "initial", "last", "compact", "without", "union", "intersection", "difference", "uniq", "zip", "unzip", "index_of", "indexOf", "last_index_of", "lastIndexOf", "sorted_i", "sorted_idx", "sortedIndex", "findIndex", "find_idx", "find_i", "find_last_i", "find_last_idx", "findLastIndex", "range", "map_object", "mapObject", "pairs", "invert", "functions", "findKey", "find_key", "find_k", "pick", "omit", "all", "spread", "memoize", "delay", "defer", "negate", "after", "before", "once",
-  "T", "Template", "T$", "Template$", "t", "template", "t$", "template$", "S", "String", "S$", "String$", "s", "string", "s$", "string$"];
-
-//
-//// 우리가 새로 만든 것
-//var func = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2",
-//  "mr", "to_mr", "is_mr", "Pipe", "Indent", "Tap", "Err", "async", "callback", "cb", "this",
-//  "args0", "args1", "args2", "args3", "args4", "args5",
-//
-//
-//
-//];
-//
-//var func2 = ["noop", "identity",
-//];
-//
-//var utility = [
-//  "constant"
-//];
-
-var sync = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2",
-  "mr", "to_mr", "is_mr", "Pipe", "Indent", "Tap", "Err", "callback", "cb", "noop", "this",
-  "identity", "args0", "args1", "args2", "args3", "args4", "args5",
-  "Always", "true", "false", "null", "not", "nnot", "log", "loge", "Hi", "f", "val",
-  "isArguments", "isFunction", "isString", "isNumber", "isDate", "isRegExp", "isError", "isObject", "has", "isArrayLike",
-  "rest", "values", "toArray", "object", "escape", "unescape", "uniqueId", "clone",
-  "isArray", "isMatch", "isEmpty", "isElement", "isEqual",
-  "keys", "wrapArray", "parseInt", "Lambda", "extend", "defaults", "flatten", "method", "set", "unset", "remove", "pop", "shift", "push", "unshift", "removeByIndex", "select", "sel",
-  "notice", //?
-  "each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter", "where", "find_where", "findWhere", "reject", "every", "some", "contains", "invoke", "pluck",
-  "max", "min", "sortBy", "groupBy", "indexBy", "countBy", "shuffle", "random", "sample", "size", "partition", "take", "head",
-  "first", "initial", "last", "compact", "without", "union", "intersection", "difference", "uniq", "zip", "unzip",
-  "indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex", "range", "mapObject", "pairs", "invert", "functions", "findKey",
-  "pick", "omit", "all", "spread", "memoize", "delay", "defer", "negate", "after", "before", "once",
-  "Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
-  "Template.each", "template.each", "String.each", "string.each"
-];
-
-/*
-var async = ["async", "Pipe", "Indent", "pipe", "pipec", "pipea", "pipea2", "cb", "callback", "jcb",
-  "Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
-  "Template.each", "template.each", "String.each", "string.each"];
-*/
-
-var func_ary = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2"];
-var coll_ary = ["each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter"];
-var array_ary = ["indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex"];
-var obj_ary = ["isArray", "isMatch", "isEmpty", "isElement", "isEqual"];
-var util_ary = ["escape", "unescape", "uniqueId"];
-var tem_ary = ["Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
-  "Template.each", "template.each", "String.each", "string.each"];
-
-var sync = {
-  //pipe_ary: pipe_ary,
-  func_ary : func_ary,
-  coll_ary: coll_ary,
-  array_ary: array_ary,
-  obj_ary: obj_ary,
-  util_ary: util_ary,
-  tem_ary: tem_ary
-};
-
+    return memo + '\
+            div.outer_section#'+ group.title +'\
+              p.gr_title '+ group.title
+      + _.reduce(funcs, function(str2, func) {
+        return str2 + '\
+              div.inner_section#' + func.title +'\
+                h4.func_title ' + func.title+' \
+                  small '+ func.usage
+          + _.reduce(func.egs, function(str3, eg) {
+            return str3 + '\
+                p '+ eg.ds + (eg.cd ? '\
+                pre.javascript    '+ eg.cd : '')
+          }, '');
+      }, '');
+  }, '').replace(/\|(_+)/g, function(m, u) { return "|" + u.replace(/_/g, '&nbsp;'); }).replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
+}
 
 //// sync 그리기
 //_.pipe(sync,
 //  _.T('funcs'), ) // 다 그리고나서  async그리는거랑 합칠 수 있음
-//
 
-var ary = [100,200,300];
-console.log(_.T.each("data", "    h3 {{data}}")(ary));
-console.log(_.pipe(ary, _.T.each("d", "    h3 {{d}}")));
 
-var make_list = _.T.each("d", "  li {{d}}");
-var make_funcs_sidebar = _.T.each('d', '\
-  a[href=#{{d}}]\
-    li _.{{d}}'); // a랑 li랑 바꿔봄
-
-console.log(func_ary);
-_.pipe(func_ary,
-  _.T('func_ary', '\
-  div#sidebar\
-    div#logo\
-      h1 Partial JS\
-    div#search\
-        input[type="text" placeholder="Search function"]\
-    div#listbar\
-      div.grouplist\
-        span.gr_title Function\
-        ul#functionlist.funclist\
-          {{make_funcs_sidebar(func_ary)}}\
-      div.grouplist\
-        span.gr_title Collection\
-        ul#collectionlist.funclist\
-          {{make_funcs_sidebar(coll_ary)}}\
-      div.grouplist\
-        span.gr_title Array\
-        ul#arraylist.funclist\
-          {{make_funcs_sidebar(array_ary)}}\
-      div.grouplist\
-        span.gr_title Object\
-        ul#objectlist.funclist\
-          {{make_funcs_sidebar(obj_ary)}}\
-      div.grouplist\
-        span.gr_title Utility\
-        ul#utilitylist.funclist\
-          {{make_funcs_sidebar(util_ary)}}\
-      div.grouplist\
-        span.gr_title Template\
-        ul#templatelist.funclist\
-          {{make_funcs_sidebar(tem_ary)}}\
+/* HTML Rendering */
+_.pipe(null,
+  _.T('', '\
+   div#side_wrapper\
+    div#sidebar\
+      div#logo\
+        h2 Partial JS\
+      div#search\
+          input[type="text" placeholder="Search function"]\
+      div#listbar\
+        div.grouplist\
+          span.gr_title Function\
+          ul#functionlist.funclist\
+            {{make_funcs_sidebar(func_ary)}}\
+        div.grouplist\
+          span.gr_title Collection\
+          ul#collectionlist.funclist\
+            {{make_funcs_sidebar(coll_ary)}}\
+        div.grouplist\
+          span.gr_title Array\
+          ul#arraylist.funclist\
+            {{make_funcs_sidebar(array_ary)}}\
+        div.grouplist\
+          span.gr_title Object\
+          ul#objectlist.funclist\
+            {{make_funcs_sidebar(obj_ary)}}\
+        div.grouplist\
+          span.gr_title Utility\
+          ul#utilitylist.funclist\
+            {{make_funcs_sidebar(util_ary)}}\
+        div.grouplist\
+          span.gr_title Template\
+          ul#templatelist.funclist\
+            {{make_funcs_sidebar(tem_ary)}}\
     div#about\
-      p Marpple ©\
+      p#copyright Marpple ©\
       ul\
         li\
-          a[href=""] Marpple\
+          a[href=""] About\
         li\
           a[href=""] Repository\
         li\
           a[href=""] Book\
   div#container\
     div#section_container\
-      div.box#function\
-        h2 Function\
-      div.box#collection\
-        h2 Collection \
-      div.box#array\
-        h2 Array\
-      div.box#object\
-        h2 Object\
-      div.box#utility\
-        h2 Utility\
-      div.box#template\
-        h2 Template\
+      {{make_section(func_data)}}\
+      {{make_section(coll_data)}}\
+      {{make_section(array_data)}}\
+      {{make_section(obj_data)}}\
+      {{make_section(util_data)}}\
+      {{make_section(tem_data)}}\
   '),
   $,
-  _.partial(_.method, _, 'appendTo', $('body'))
+  _(_.method, _, 'appendTo', $('body'))
 );
 
 
+
+$(document).ready(function() {
+
+  // highlight (code prettify)
+  $('pre.javascript').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  // code copy (auto copy)
+  $('pre.javascript').dblclick(function(e) {
+    var cp = document.createElement('textarea');
+    cp.value = e.target.innerText;
+
+    e.target.appendChild(cp).select();
+    document.execCommand('copy');
+    cp.remove();
+  });
+
+  /* Event listener functions */
+  // search event
+  $('#search').keyup(function(e) {
+    update_section_list($(e.target).val());
+  });
+
+  // // sidebar list click event (focus animation)
+  // $('#listbar > .grouplist li').on('click', function(e) {
+  //   var $section = $(e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
+  //   console.log(typeof e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
+  //   console.log(test = $section);
+  //
+  //   if (!$section[0]) return;
+  //
+  //   (function() {
+  //     if (!$section[0].style.boxShadow) $section[0].style.boxShadow = "#ccc 0 0 1px";
+  //
+  //     var depth = C.iadd($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 5);
+  //
+  //     // shadow on
+  //     if (depth < 70) {
+  //       $section.css('box-shadow', ' #ccc 0 0 '+ depth +'px');
+  //       setTimeout(arguments.callee, 30);
+  //     }
+  //     else {
+  //       $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
+  //       // shadow off
+  //       (function() {
+  //         var depth = C.isub($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 10);
+  //         if (depth > 0) {
+  //           $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
+  //           setTimeout(arguments.callee, 30);
+  //         } else {
+  //           $section.css('box-shadow', '#ccc 0 0 0px');
+  //         }
+  //       })();
+  //     }
+  //   })();
+  // });
+});
+
+function update_section_list(str) {
+  // 공통 2줄
+  if (!str) return $('#listbar li').show();
+  var reg = new RegExp(str, "i");
+
+
+  var $list = $('#listbar li');
+  console.log($list);
+  _.each($list, function(li) {
+    console.log(li, li.innerText);
+    li.innerText.match(reg) ? $(li).show() : $(li).hide();
+  });
+
+  //_.each(sync, function(key) {
+  //  _.each(sync[key], function(v) {
+  //    li.innerText.match(reg) ? $li.show() : $li.hide();
+  //  });
+  //});
+
+
+  ////////////////////////////////////////////////
+// 이거 다시 살려야댐 ㅜㅜ
+
+  //var $func_li = C.filter($('ul.func_list > li'), function(func){
+  //  return $(func).attr('data').match(reg) ? !$('ul.func_list > li').show() : true;
+  //});
+  //
+  //C.each($func_li, function(li) {
+  //  var $li = $(li);
+  //  if (!li.innerText.match(reg)) return $li.hide();
+  //
+  //  var $methods = $li.children('.method_list').children('li');
+  //  C.each($methods, function(m) {
+  //    m.innerText.match(reg) ? $(m).show() : $(m).hide();
+  //  });
+  //
+  //  return $li.show();
+  //});
+}
+
+
+/* Previous Code */
 
 // console.time();
 // /*HTML Rendering*/
@@ -213,64 +242,7 @@ _.pipe(func_ary,
 //
 //
 
-// /*Functions List variable declaration*/
-// var funcs = C.filter(C.keys(F), function(val) { return val !== 'F' && val !== 'G' });
 
-///*Section Data declaration*/
-//var section_data = {
-//  C : {
-//    func : {
-//      title : 'C',
-//      usage : 'C(args..., function), A(args..., [function...])',
-//      egs : [{
-//        ds: '`C`는 this를 제외한 `call`이라고 생각하면 쉽습니다.',
-//        cd: '\
-//                  |function minus(a, b) {\
-//                  |__return a - b; \
-//                  |}\
-//                  |\
-//                  |var r1 = A(20,10, minus);\
-//                  |console.log(r1); // 10'}]
-//    },
-//    methods: {
-//      isArguments :
-//      {
-//        title : 'isArguments',
-//        usage : 'C.isArguments(object)',
-//        egs : [{
-//          ds: "`C.isArguments`는 arguments 객체를 판별하는 함수입니다.",
-//          cd: "\
-//                  |(function() { return C.isArguments(arguments); })([1,2,3]) // true\
-//                  |\
-//                  |C.isArguments([1,2,3]) // false"}]
-//      },
-//      isFunction :
-//      {
-//        title : 'isFunction',
-//        usage : 'C.isFunction(object)',
-//        egs : [{
-//          ds: "`C.isFunction`은 함수를 판별하는 함수입니다.",
-//          cd: "\
-//                  |C.isFunction(C.map) // true"}]
-//      },
-//      isString :
-//      {
-//        title : 'isString',
-//        usage : 'C.isString(object), C.is_string(object)',
-//        egs : [{
-//          ds: "`C.isString`은 문자열을 판별하는 함수입니다.",
-//          cd: "\
-//                  |C.isString('Hello ABC!') // true"}]
-//      }
-//    }
-//  }
-//};
-
-
-//
-//
-//
-//console.log("~~~~~~~~~~~~~~~~~~~~~");
 // C([
 //   H('', '\
 //       a.btn.btn-sm.btn-info.pull-right#go_template[type=button href=template.html target=blank] try\
@@ -337,102 +309,3 @@ _.pipe(func_ary,
 //     return $li.show();
 //   });
 // }
-
-
- $(document).ready(function() {
-
-   $('pre').each(function(i, block) {
-     hljs.highlightBlock(block);
-   });
-
-   /*Event listener functions*/
-   // search function
-   $('#search').keyup(function(e) {
-     update_section_list($(e.target).val());
-   });
-
-   // focus effect
-   $('#list_bar li a').on('click', function(e) {
-
-     var $section = $(e.target.href.match(/#[\w]+\$?$/)[0]);
-
-     if (!$section[0]) return;
-
-     (function() {
-       if (!$section[0].style.boxShadow) $section[0].style.boxShadow = "#ccc 0 0 1px";
-
-       var depth = C.iadd($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 5);
-
-       // shadow on
-       if (depth < 70) {
-         $section.css('box-shadow', ' #ccc 0 0 '+ depth +'px');
-         setTimeout(arguments.callee, 30);
-       }
-       else {
-         $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
-         // shadow off
-         (function() {
-           var depth = C.isub($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 10);
-           if (depth > 0) {
-             $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
-             setTimeout(arguments.callee, 30);
-           } else {
-             $section.css('box-shadow', '#ccc 0 0 0px');
-           }
-         })();
-       }
-     })();
-   });
-
-   $('pre.javascript').dblclick(function(e) {
-     var cp = document.createElement('textarea');
-     cp.value = e.target.innerText;
-
-     e.target.appendChild(cp).select();
-     document.execCommand('copy');
-     cp.remove();
-   });
-
- });
-
-function update_section_list(str) {
-
-
-  // 공통 2줄
-  if (!str) return $('#listbar li').show();
-  var reg = new RegExp(str, "i");
-
-
-  var $list = $('#listbar li');
-  console.log($list);
-  _.each($list, function(li) {
-    console.log(li, li.innerText);
-    li.innerText.match(reg) ? $(li).show() : $(li).hide();
-  });
-
-  //_.each(sync, function(key) {
-  //  _.each(sync[key], function(v) {
-  //    li.innerText.match(reg) ? $li.show() : $li.hide();
-  //  });
-  //});
-
-
-  ////////////////////////////////////////////////
-// 이거 다시 살려야댐 ㅜㅜ
-
-  //var $func_li = C.filter($('ul.func_list > li'), function(func){
-  //  return $(func).attr('data').match(reg) ? !$('ul.func_list > li').show() : true;
-  //});
-  //
-  //C.each($func_li, function(li) {
-  //  var $li = $(li);
-  //  if (!li.innerText.match(reg)) return $li.hide();
-  //
-  //  var $methods = $li.children('.method_list').children('li');
-  //  C.each($methods, function(m) {
-  //    m.innerText.match(reg) ? $(m).show() : $(m).hide();
-  //  });
-  //
-  //  return $li.show();
-  //});
-}

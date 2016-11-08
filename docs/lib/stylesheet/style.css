@@ -1,27 +1,48 @@
-
+body {
+  background-color: whitesmoke;
+  font-size: 14px;
+}
 
 /* side bar */
-#sidebar {
-  padding: 5px 30px;
-
+#side_wrapper {
   background-color: white;
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0px;
-  width: 200px;
+  bottom: 0;
+  width: 240px;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.14);
-  /*box-sizing: border-box;*/
+}
+#side_wrapper > #sidebar {
+  padding: 5px 30px;
 }
 
-#sidebar #logo {
+#side_wrapper > #about {
+  padding: 5px 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+#side_wrapper > #about ul {
+  padding: 0;
+}
+
+#side_wrapper > #about li {
+  display: inline;
+  margin-right: 5px;
+}
+
+#about > #copyright {
+  font-weight: bold;
+}
+
+#sidebar > #logo {
 
 }
 
-#sidebar input {
+#search > input {
   outline-style: none;
   font-size: 14px;
   padding: 5px;
@@ -36,11 +57,15 @@
   /*background-color: #66d9ef;*/
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 0 10px 0;
 }
 
+/*#listbar > .grouplist {*/
+  /*margin-bottom: 10px;*/
+/*}*/
+
 #listbar .gr_title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -49,7 +74,6 @@
   font-weight: bold;
 }
 
-
 #listbar a {
   text-decoration: none;
   color: black;
@@ -57,39 +81,58 @@
 }
 
 
-
-/*#sidebar #listbar ul#funclist li {*/
-  /*list-style: none;*/
-/*}*/
-
-#sidebar #about {
-
-
-}
-
-
-#about ul {
-  padding: 0px;
-}
-#about li {
-  display: inline;
-  /*text-align: match-parent;*/
-  margin: 5px;
-}
-
-
 /* container */
-
 #container {
-  padding: 0 0 0 300px;
-  width: 100%;
-
-
-  /*지울꺼*/
-  height: 1000px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 241px;
+  right: 0;
+  overflow: auto;
 }
+
+#container > #section_container {
+  margin: 30px 300px 50px 50px;
+  max-width: 900px;
+  min-width: 700px;
+}
+
+#section_container > .outer_section {
+  padding: 20px;
+  border-bottom: 1px solid gainsboro;
+}
+
+#section_container > .outer_section:last-child {
+  border-bottom: none;
+}
+
+.outer_section > .gr_title {
+  font-size: 22px;
+}
+
+.outer_section > .inner_section {
+}
+
+.inner_section > .func_title {
+  font-size: 17px;
+}
+
+
+#section_container code {
+  color: #333;
+  background-color: #fff;
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+}
+
+#section_container small {
+  font-size: 60%;
+  padding-left: 10px;
+  font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+}
+
+
 
 /* 지우개 */
-div {
-  border: 1px grey solid;
-}
+/*div {*/
+  /*border: 1px grey solid;*/
+/*}*/
