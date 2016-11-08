@@ -1,5 +1,7 @@
 body {
   background-color: whitesmoke;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  line-height: 1.42857143;
   font-size: 14px;
 }
 
@@ -39,13 +41,17 @@ body {
 }
 
 #sidebar > #logo {
-
+  font-size: 24px;
+  font-weight: bold;
 }
 
 #search > input {
   outline-style: none;
-  font-size: 14px;
+  font-size: 12px;
   padding: 5px;
+  width: 80%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
 }
 
 #sidebar #listbar {
@@ -65,7 +71,7 @@ body {
 /*}*/
 
 #listbar .gr_title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: bold;
 }
 
@@ -114,17 +120,18 @@ body {
 }
 
 .inner_section > .func_title {
-  font-size: 17px;
+  font-size: 18px;
 }
 
 
-#section_container code {
+.inner_section code {
   color: #333;
   background-color: #fff;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+  font-size: 13px;
 }
 
-#section_container small {
+.inner_section small {
   font-size: 60%;
   padding-left: 10px;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;

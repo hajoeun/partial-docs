@@ -15,7 +15,7 @@ function reduce_section_data(section_data) {
       + _.reduce(funcs, function(str2, func) {
         return str2 + '\
               div.inner_section#' + func.title +'\
-                h4.func_title ' + func.title+' \
+                p.func_title ' + func.title+' \
                   small '+ func.usage
           + _.reduce(func.egs, function(str3, eg) {
             return str3 + '\
@@ -37,7 +37,7 @@ _.pipe(null,
    div#side_wrapper\
     div#sidebar\
       div#logo\
-        h2 Partial JS\
+        p Partial JS\
       div#search\
           input[type="text" placeholder="Search function"]\
       div#listbar\
