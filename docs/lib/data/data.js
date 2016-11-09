@@ -64,22 +64,36 @@ var sync = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2",
  */
 
 /* Functions List*/
-var func_ary = ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2"];
-var coll_ary = ["each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter"];
-var array_ary = ["indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex"];
-var obj_ary = ["isArray", "isMatch", "isEmpty", "isElement", "isEqual"];
-var util_ary = ["escape", "unescape", "uniqueId"];
-var tem_ary = ["Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
-  "Template.each", "template.each", "String.each", "string.each"];
-
 var sync = {
-  //pipe_ary: pipe_ary,
-  func_ary : func_ary,
-  coll_ary: coll_ary,
-  array_ary: array_ary,
-  obj_ary: obj_ary,
-  util_ary: util_ary,
-  tem_ary: tem_ary
+  pipe: {
+    title: "Pipe",
+    data: ["right", "righta", "pipe", "pipec", "pipea", "pipea2", "mr", "to_mr", "is_mr", "Pipe", "Indent",
+      "Tap", "Err", "callback", "cb", "noop", "this", "identity", "args0", "args1", "args2", "args3", "args4", "args5"]
+  },
+  func: {
+    title: "Function",
+    data: ["partial", "right", "righta", "pipe", "pipec", "pipea", "pipea2"]
+  },
+  coll: {
+    title: "Collection",
+    data: ["each", "map", "reduce", "reduce_right", "reduceRight", "find", "filter"]
+  },
+  array: {
+    title: "Array",
+    data: ["indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex"]
+  },
+  obj: {
+    title: "Object",
+    data: ["isArray", "isMatch", "isEmpty", "isElement", "isEqual"]
+  },
+  util: {
+    title: "Utility",
+    data: ["escape", "unescape", "uniqueId"]
+  },
+  tem: {
+    title: "Template",
+    data: ["Template", "Template$", "template", "template$", "String", "String$", "string", "string$", "Template.each", "template.each", "String.each", "string.each"]
+  }
 };
 
 

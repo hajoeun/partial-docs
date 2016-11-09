@@ -6,7 +6,7 @@ body {
 }
 
 /* side bar */
-#side_wrapper {
+#sidebar {
   background-color: white;
   position: fixed;
   top: 0;
@@ -18,65 +18,27 @@ body {
   overflow-x: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.14);
 }
-#side_wrapper > #sidebar {
-  padding: 5px 30px;
-}
 
-#side_wrapper > #about {
-  padding: 5px 30px;
-  border-top: 1px solid rgba(0, 0, 0, 0.14);
-}
-
-#side_wrapper > #about ul {
-  padding: 0;
-}
-
-#side_wrapper > #about li {
-  display: inline;
-  margin-right: 5px;
-}
-
-#about > #copyright {
-  font-weight: bold;
-}
-
-#sidebar > #logo {
+#logo {
   font-size: 24px;
   font-weight: bold;
+  padding: 0 30px;
 }
 
-#search > input {
-  outline-style: none;
-  font-size: 12px;
-  padding: 5px;
-  width: 80%;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 4px;
+#listbar {
+  padding: 5px 20px;
 }
 
-#sidebar #listbar {
-  /*background-color: #1abc9c;*/
-  margin-top : 15px;
-
+#listbar ul {
+  padding: 5px 10px;
 }
-#sidebar #listbar ul {
-  /*background-color: #66d9ef;*/
+
+#listbar ul, #listbar li{
   list-style: none;
-  margin: 0;
-  padding: 0 0 10px 0;
 }
-
-/*#listbar > .grouplist {*/
-  /*margin-bottom: 10px;*/
-/*}*/
 
 #listbar .gr_title {
   font-size: 17px;
-  font-weight: bold;
-}
-
-#listbar a:hover {
-  /*text-decoration: underline;*/
   font-weight: bold;
 }
 
@@ -84,6 +46,41 @@ body {
   text-decoration: none;
   color: black;
   cursor: hand;
+}
+
+#listbar a:hover {
+  font-weight: bold;
+}
+
+#search > input {
+  outline-style: none;
+  font-size: 12px;
+  padding: 5px;
+  width: 90%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+}
+
+#no_result {
+  color: #ccc;
+}
+
+#about {
+  padding: 5px 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+#copyright {
+  font-weight: bold;
+}
+
+#about ul {
+  padding: 0;
+}
+
+#about li {
+  display: inline;
+  margin-right: 5px;
 }
 
 

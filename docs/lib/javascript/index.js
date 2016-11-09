@@ -1,6 +1,12 @@
 /* General functions */ var test;
-var make_list = _.T.each("d", "  li {{d}}");
-var make_funcs_sidebar = _.T.each('d', '  a[href=#{{d}}]    li _.{{d}}'); // a랑 li랑 바꿔봄
+var make_func_list = _.T.each('arr', '\
+  a[href=#{{arr}}]\
+    li.fn_li _.{{arr}}');
+var make_group_list = _.T.each('obj', '\
+  li#{{obj.title}}.gr_li\
+    span.gr_title {{obj.title}}\
+    ul.func_list\
+      {{make_func_list(obj.data)}}');
 var make_section = function(section_data) { return _.T('', reduce_section_data(section_data))(); };
 
 function reduce_section_data(section_data) {
@@ -34,40 +40,18 @@ function reduce_section_data(section_data) {
 /* HTML Rendering */
 _.pipe(null,
   _.T('', '\
-   div#side_wrapper\
-    div#sidebar\
-      div#logo\
+   div#sidebar\
+    div#logo\
         p Partial JS\
+    div#listbar\
       div#search\
-          input[type="text" placeholder="Search function"]\
-      div#listbar\
-        div.grouplist\
-          span.gr_title Function\
-          ul#functionlist.funclist\
-            {{make_funcs_sidebar(func_ary)}}\
-        div.grouplist\
-          span.gr_title Collection\
-          ul#collectionlist.funclist\
-            {{make_funcs_sidebar(coll_ary)}}\
-        div.grouplist\
-          span.gr_title Array\
-          ul#arraylist.funclist\
-            {{make_funcs_sidebar(array_ary)}}\
-        div.grouplist\
-          span.gr_title Object\
-          ul#objectlist.funclist\
-            {{make_funcs_sidebar(obj_ary)}}\
-        div.grouplist\
-          span.gr_title Utility\
-          ul#utilitylist.funclist\
-            {{make_funcs_sidebar(util_ary)}}\
-        div.grouplist\
-          span.gr_title Template\
-          ul#templatelist.funclist\
-            {{make_funcs_sidebar(tem_ary)}}\
+        input[type="text" placeholder="Search function"]\
+      ul#group_list\
+        {{make_group_list(sync)}}\
+        small#no_result 검색 결과가 없습니다.\
     div#about\
       p#copyright Marpple ©\
-      ul\
+      ul#linklist\
         li\
           a[href=""] About\
         li\
@@ -90,6 +74,7 @@ _.pipe(null,
 
 
 $(document).ready(function() {
+  $('#no_result').hide();
 
   // highlight (code prettify)
   $('pre.javascript').each(function(i, block) {
@@ -107,84 +92,30 @@ $(document).ready(function() {
   });
 
   /* Event listener functions */
-  // search event
   $('#search').keyup(function(e) {
     update_section_list($(e.target).val());
   });
-
-  // // sidebar list click event (focus animation)
-  // $('#listbar > .grouplist li').on('click', function(e) {
-  //   var $section = $(e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
-  //   console.log(typeof e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
-  //   console.log(test = $section);
-  //
-  //   if (!$section[0]) return;
-  //
-  //   (function() {
-  //     if (!$section[0].style.boxShadow) $section[0].style.boxShadow = "#ccc 0 0 1px";
-  //
-  //     var depth = C.iadd($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 5);
-  //
-  //     // shadow on
-  //     if (depth < 70) {
-  //       $section.css('box-shadow', ' #ccc 0 0 '+ depth +'px');
-  //       setTimeout(arguments.callee, 30);
-  //     }
-  //     else {
-  //       $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
-  //       // shadow off
-  //       (function() {
-  //         var depth = C.isub($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 10);
-  //         if (depth > 0) {
-  //           $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
-  //           setTimeout(arguments.callee, 30);
-  //         } else {
-  //           $section.css('box-shadow', '#ccc 0 0 0px');
-  //         }
-  //       })();
-  //     }
-  //   })();
-  // });
 });
 
 function update_section_list(str) {
-  // 공통 2줄
-  if (!str) return $('#listbar li').show();
-  var reg = new RegExp(str, "i");
+  if (!str) return ($('#listbar li').show());
 
-
-  var $list = $('#listbar li');
-  console.log($list);
-  _.each($list, function(li) {
-    console.log(li, li.innerText);
-    li.innerText.match(reg) ? $(li).show() : $(li).hide();
+  var reg = new RegExp(str, "i"), match = false;
+  var reject_group = _.reject($('ul#group_list li.gr_li'), function(group) {
+    if (group.id.match(reg)) { $('#' + group.id + ' li').show(); return match = true; }
   });
 
-  //_.each(sync, function(key) {
-  //  _.each(sync[key], function(v) {
-  //    li.innerText.match(reg) ? $li.show() : $li.hide();
-  //  });
-  //});
+  _.each(reject_group, function(gr_li) {
+    var flag = false;
 
+    _.each($('#' + gr_li.id + ' ul.func_list li.fn_li'), function(li) {
+      li.innerText.match(reg) ? (flag = match) && $(li).show() : $(li).hide();
+    });
 
-  ////////////////////////////////////////////////
-// 이거 다시 살려야댐 ㅜㅜ
+    if (!flag) $(gr_li).hide();
+  });
 
-  //var $func_li = C.filter($('ul.func_list > li'), function(func){
-  //  return $(func).attr('data').match(reg) ? !$('ul.func_list > li').show() : true;
-  //});
-  //
-  //C.each($func_li, function(li) {
-  //  var $li = $(li);
-  //  if (!li.innerText.match(reg)) return $li.hide();
-  //
-  //  var $methods = $li.children('.method_list').children('li');
-  //  C.each($methods, function(m) {
-  //    m.innerText.match(reg) ? $(m).show() : $(m).hide();
-  //  });
-  //
-  //  return $li.show();
-  //});
+  match ? $('#no_result').hide() : $('#no_result').show();
 }
 
 
@@ -309,3 +240,37 @@ function update_section_list(str) {
 //     return $li.show();
 //   });
 // }
+
+// // sidebar list click event (focus animation)
+// $('#listbar > .grouplist li').on('click', function(e) {
+//   var $section = $(e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
+//   console.log(typeof e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
+//   console.log(test = $section);
+//
+//   if (!$section[0]) return;
+//
+//   (function() {
+//     if (!$section[0].style.boxShadow) $section[0].style.boxShadow = "#ccc 0 0 1px";
+//
+//     var depth = C.iadd($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 5);
+//
+//     // shadow on
+//     if (depth < 70) {
+//       $section.css('box-shadow', ' #ccc 0 0 '+ depth +'px');
+//       setTimeout(arguments.callee, 30);
+//     }
+//     else {
+//       $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
+//       // shadow off
+//       (function() {
+//         var depth = C.isub($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 10);
+//         if (depth > 0) {
+//           $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
+//           setTimeout(arguments.callee, 30);
+//         } else {
+//           $section.css('box-shadow', '#ccc 0 0 0px');
+//         }
+//       })();
+//     }
+//   })();
+// });
