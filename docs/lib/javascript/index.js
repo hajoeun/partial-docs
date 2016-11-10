@@ -77,6 +77,8 @@ $(document).ready(function() {
     cp.remove();
   });
 
+  $('#listbar .gr_li:last').prepend("<a href='template.html' target='_blank'><button id='try'><span>TRY</span></button></a>")
+
   /* Event listener functions */
   $('#search').keyup(function(e) {
     update_section_list($(e.target).val());
@@ -85,17 +87,17 @@ $(document).ready(function() {
   $('#listbar i.fa').click(function(e) {
     var F_list = e.target.nextSibling.nextSibling;
 
-    if (!F_list.style.display || (F_list.style.display == 'block')) {
-      hide(F_list); e.target.className = "fa fa-minus-square-o";
-    } else {
-      show(F_list); e.target.className = "fa fa-plus-square-o";
-    }
+    if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); e.target.className = "fa fa-minus-square-o";}
+    else { show(F_list); e.target.className = "fa fa-plus-square-o"; }
   });
+
+  // $('button#try').click(function(){ window.open('http://www.marpple.com/', '_blank' )});
 });
 
+var open_marpple = function() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; };
 function hide(e) { $(e).hide(); }
 function show(e) { $(e).show(); }
-function showAll(e, childName) { $(e).find(childName).show(); $(e).show(); }
+function showAll(e, childName) { $(e).find(childName).show(); $(e).show(); $('#no_result').hide(); }
 function update_section_list(str) {
 
   str = str.replace(/\s*([?\w]+)\s*/,'$1'); // Trim
@@ -116,8 +118,11 @@ function update_section_list(str) {
     else { alive[g_name] ? show(g_list) : hide(g_list); }
   });
 
+  if (('marpple' == str) && open_marpple) open_marpple();
   _.some(alive) ? $('#no_result').hide() : $('#no_result').show();
 }
+
+
 
 /* Previous Code */
 // // sidebar list click event (focus animation)

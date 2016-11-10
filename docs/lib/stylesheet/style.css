@@ -17,6 +17,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.14);
+  padding-top: 20px;
 }
 
 #logo {
@@ -72,10 +73,6 @@ ul.func_list .fn_li {
   cursor: pointer;
 }
 
-/*#listbar i.fa:hover {*/
-  /*font-weight: 600;*/
-/*}*/
-
 #listbar a {
   text-decoration: none;
   color: black;
@@ -84,6 +81,46 @@ ul.func_list .fn_li {
 
 #listbar a:hover {
   font-weight: bold;
+}
+
+button#try {
+  float: right;
+  border-radius: 4px;
+  display: inline-block;
+  background-color: #5cb85c;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 11px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+  outline: none;
+}
+
+button#try > span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button#try > span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -10px;
+  transition: 0.5s;
+}
+
+button#try:hover span {
+  padding-right: 10px;
+}
+
+button#try:hover span:after {
+  opacity: 1;
+  right: 0;
 }
 
 #no_result {
