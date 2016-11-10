@@ -4,6 +4,7 @@ var make_func_list = _.T.each('d', '\
     li.fn_li[data={{d}}] _.{{d}}');
 var make_group_list = _.T.each('obj', '\
   li.gr_li[data={{obj.title}}]\
+    i.fa.fa-plus-square-o\
     a[href=#{{obj.title}}].gr_title {{obj.title}}\
     ul.func_list\
       {{make_func_list(obj.data)}}');
@@ -80,6 +81,16 @@ $(document).ready(function() {
   $('#search').keyup(function(e) {
     update_section_list($(e.target).val());
   });
+
+  $('#listbar i.fa.fa-plus-square-o').click(function(e) {
+    var F_list = e.target.nextSibling.nextSibling;
+
+    if (!F_list.style.display || (F_list.style.display == 'block')) {
+      hide(F_list); e.target.className = "fa fa-minus-square-o";
+    } else {
+      show(F_list); e.target.className = "fa fa-plus-square-o";
+    }
+  })
 });
 
 function hide(e) { $(e).hide(); }
