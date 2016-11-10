@@ -20,36 +20,61 @@ body {
 }
 
 #logo {
+  padding: 20px;
+}
+
+#logo > span {
   font-size: 24px;
-  font-weight: bold;
-  padding: 0 30px;
+  font-weight: 500;
 }
 
 #listbar {
-  padding: 5px 10px;
-}
-
-#listbar ul {
-  padding: 5px 13px;
+  padding: 0 20px 20px 20px;
 }
 
 #listbar ul, #listbar li{
   list-style: none;
 }
 
-#listbar li.fn_li {
-  padding-left: 10px;
+#listbar > #search {
+  margin: 0;
+  padding: 0;
 }
 
-#listbar i.fa.fa-plus-square-o {
-  cursor: pointer;
+#search > input {
+  outline-style: none;
+  font-size: 12px;
+  padding: 5px;
+  width: 94%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+}
+
+#listbar > #group_list {
+  margin: 20px 0 0 0;
+  padding: 0;
 }
 
 #listbar .gr_title {
   font-size: 17px;
-  font-weight: bold;
   padding-left: 5px;
 }
+
+#listbar ul.func_list {
+  padding: 10px 20px;
+}
+
+ul.func_list .fn_li {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#listbar i.fa {
+  cursor: pointer;
+}
+
+/*#listbar i.fa:hover {*/
+  /*font-weight: 600;*/
+/*}*/
 
 #listbar a {
   text-decoration: none;
@@ -61,30 +86,16 @@ body {
   font-weight: bold;
 }
 
-#search {
-  margin: 0 10px;
-}
-
-#search > input {
-  outline-style: none;
-  font-size: 12px;
-  padding: 5px;
-  width: 90%;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 4px;
-}
-
 #no_result {
   color: #ccc;
 }
 
 #about {
-  padding: 5px 30px;
+  padding: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.14);
 }
 
 #copyright {
-  font-weight: bold;
 }
 
 #about ul {
@@ -95,7 +106,6 @@ body {
   display: inline;
   margin-right: 5px;
 }
-
 
 /* container */
 #container {
@@ -132,7 +142,6 @@ body {
 .inner_section > .func_title {
   font-size: 18px;
 }
-
 
 .inner_section code {
   color: #333;

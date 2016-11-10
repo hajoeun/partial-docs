@@ -35,7 +35,7 @@ _.pipe(null,
   _.T('', '\
    div#sidebar\
     div#logo\
-        p Partial JS\
+      span Partial JS\
     div#listbar\
       div#search\
         input[type="text" placeholder="Search Functions" autofocus]\
@@ -82,7 +82,7 @@ $(document).ready(function() {
     update_section_list($(e.target).val());
   });
 
-  $('#listbar i.fa.fa-plus-square-o').click(function(e) {
+  $('#listbar i.fa').click(function(e) {
     var F_list = e.target.nextSibling.nextSibling;
 
     if (!F_list.style.display || (F_list.style.display == 'block')) {
@@ -90,7 +90,7 @@ $(document).ready(function() {
     } else {
       show(F_list); e.target.className = "fa fa-plus-square-o";
     }
-  })
+  });
 });
 
 function hide(e) { $(e).hide(); }
