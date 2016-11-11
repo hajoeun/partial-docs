@@ -24,7 +24,7 @@ var reduce_section_data = function(data) {
           + _.reduce(func.egs, function(str3, eg) {
             return str3 + '\
                 p '+ eg.ds + (eg.cd ? '\
-                pre.javascript    '+ eg.cd : '')
+                textarea.input.code    '+ eg.cd : '')
           }, '');
       }, '');
   }, '').replace(/\|(_+)/g, function(m, u) { return "|" + u.replace(/_/g, '&nbsp;'); }).replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
@@ -63,26 +63,22 @@ _.pipe(null,
 $(document).ready(function() {
   $('#no_result').hide();
 
-  // highlight (code prettify)
-  $('pre.javascript').each(function(i, block) {
-    hljs.highlightBlock(block);
+  _.each($('textarea.input.code'), function(e) {
+    return CodeMirror(function(t) {
+        t.className += " " + e.className;
+        e.parentNode.replaceChild(t, e);
+      }, {
+        mode: "javascript",
+        value: e.value,
+        theme: "marpple",
+        tabSize: 0
+      });
   });
 
-  // code copy (auto copy)
-  $('pre.javascript').dblclick(function(e) {
-    var cp = document.createElement('textarea');
-    cp.value = e.target.innerText;
-    e.target.appendChild(cp).select();
-    document.execCommand('copy');
-    cp.remove();
-  });
-
-  $('#listbar .gr_li:last').prepend("<a href='template.html' target='_blank'><button id='try'><span>TRY</span></button></a>")
+  // $('#listbar .gr_li:last').prepend("<a href='template.html' target='_blank'><button id='try'><span>TRY</span></button></a>")
 
   /* Event listener functions */
-  $('#search').keyup(function(e) {
-    update_section_list($(e.target).val());
-  });
+  $('#search').keyup(function(e) { update_section_list($(e.target).val()); });
 
   $('#listbar i.fa').click(function(e) {
     var F_list = e.target.nextSibling.nextSibling;
@@ -90,8 +86,6 @@ $(document).ready(function() {
     if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); e.target.className = "fa fa-minus-square-o";}
     else { show(F_list); e.target.className = "fa fa-plus-square-o"; }
   });
-
-  // $('button#try').click(function(){ window.open('http://www.marpple.com/', '_blank' )});
 });
 
 var open_marpple = function() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; };
@@ -121,40 +115,3 @@ function update_section_list(str) {
   if (('marpple' == str) && open_marpple) open_marpple();
   _.some(alive) ? $('#no_result').hide() : $('#no_result').show();
 }
-
-
-
-/* Previous Code */
-// // sidebar list click event (focus animation)
-// $('#listbar > .grouplist li').on('click', function(e) {
-//   var $section = $(e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
-//   console.log(typeof e.target.parentNode.href.match(/#[\w]+\$?$/)[0]);
-//   console.log(test = $section);
-//
-//   if (!$section[0]) return;
-//
-//   (function() {
-//     if (!$section[0].style.boxShadow) $section[0].style.boxShadow = "#ccc 0 0 1px";
-//
-//     var depth = C.iadd($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 5);
-//
-//     // shadow on
-//     if (depth < 70) {
-//       $section.css('box-shadow', ' #ccc 0 0 '+ depth +'px');
-//       setTimeout(arguments.callee, 30);
-//     }
-//     else {
-//       $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
-//       // shadow off
-//       (function() {
-//         var depth = C.isub($section[0].style.boxShadow.match(/([0-9]*)px$/)[1], 10);
-//         if (depth > 0) {
-//           $section.css('box-shadow', '#ccc 0 0 '+ depth +'px');
-//           setTimeout(arguments.callee, 30);
-//         } else {
-//           $section.css('box-shadow', '#ccc 0 0 0px');
-//         }
-//       })();
-//     }
-//   })();
-// });

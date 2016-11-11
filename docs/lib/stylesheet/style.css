@@ -12,12 +12,11 @@ body {
   top: 0;
   left: 0;
   bottom: 0;
-  width: 240px;
+  width: 215px;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.14);
-  padding-top: 20px;
 }
 
 #logo {
@@ -46,7 +45,7 @@ body {
   outline-style: none;
   font-size: 12px;
   padding: 5px;
-  width: 94%;
+  width: 93%;
   border: 1px solid rgba(0, 0, 0, 0.14);
   border-radius: 4px;
 }
@@ -83,45 +82,45 @@ ul.func_list .fn_li {
   font-weight: bold;
 }
 
-button#try {
-  float: right;
-  border-radius: 4px;
-  display: inline-block;
-  background-color: #5cb85c;
-  border: none;
-  color: #fff;
-  text-align: center;
-  font-size: 11px;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: all 0.5s;
-  outline: none;
-}
+/*button#try {*/
+  /*float: right;*/
+  /*border-radius: 4px;*/
+  /*display: inline-block;*/
+  /*background-color: #5cb85c;*/
+  /*border: none;*/
+  /*color: #fff;*/
+  /*text-align: center;*/
+  /*font-size: 11px;*/
+  /*padding: 5px 10px;*/
+  /*cursor: pointer;*/
+  /*transition: all 0.5s;*/
+  /*outline: none;*/
+/*}*/
 
-button#try > span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
+/*button#try > span {*/
+  /*cursor: pointer;*/
+  /*display: inline-block;*/
+  /*position: relative;*/
+  /*transition: 0.5s;*/
+/*}*/
 
-button#try > span:after {
-  content: '»';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -10px;
-  transition: 0.5s;
-}
+/*button#try > span:after {*/
+  /*content: '»';*/
+  /*position: absolute;*/
+  /*opacity: 0;*/
+  /*top: 0;*/
+  /*right: -10px;*/
+  /*transition: 0.5s;*/
+/*}*/
 
-button#try:hover span {
-  padding-right: 10px;
-}
+/*button#try:hover span {*/
+  /*padding-right: 10px;*/
+/*}*/
 
-button#try:hover span:after {
-  opacity: 1;
-  right: 0;
-}
+/*button#try:hover span:after {*/
+  /*opacity: 1;*/
+  /*right: 0;*/
+/*}*/
 
 #no_result {
   color: #ccc;
@@ -149,15 +148,17 @@ button#try:hover span:after {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 241px;
-  right: 0;
+  left: 215px;
+  /*right: 0;*/
+  width: 100%;
   overflow: auto;
 }
 
 #container > #section_container {
-  margin: 30px 300px 50px 50px;
-  max-width: 900px;
-  min-width: 700px;
+  margin: 20px;
+  /*max-width: 900px;*/
+  /*min-width: 700px;*/
+  width: 700px;
 }
 
 #section_container > .outer_section {
@@ -192,10 +193,3 @@ button#try:hover span:after {
   padding-left: 10px;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
 }
-
-
-
-/* 지우개 */
-/*div {*/
-  /*border: 1px grey solid;*/
-/*}*/

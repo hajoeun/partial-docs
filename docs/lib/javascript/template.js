@@ -201,8 +201,7 @@ C([H('','\
 
 /*DOM 제어*/
 $(document).ready(function() {
-  var $data_input = $('.s_test > .input.data'),
-    $code_input = $('.s_test > .input.code');
+  var $data_input = $('.s_test > .input.data'), $code_input = $('.s_test > .input.code');
 
   C.each($data_input, function(ele) {
     if (!ele.hidden)
