@@ -23,17 +23,19 @@ var reduce_section_data = function(data) {
                   small '+ func.usage
           + _.reduce(func.egs, function(str3, eg) {
             return str3 + '\
+                button.try\
+                  span Try\
                 p '+ eg.ds + (eg.cd ? '\
                 textarea.input.code    '+ eg.cd : '')
           }, '');
       }, '');
-  }, '').replace(/\|(_+)/g, function(m, u) { return "|" + u.replace(/_/g, '&nbsp;'); }).replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
+  }, '').replace(/\|(__+)/g, function(m, u) { return "|" + u.replace(/__/g, '&nbsp;&nbsp;'); }).replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
 };
 
 /* HTML Rendering */
 _.pipe(null,
   _.T('', '\
-   div#sidebar\
+  div#sidebar\
     div#logo\
       span Partial JS\
     div#listbar\
@@ -54,13 +56,16 @@ _.pipe(null,
   div#container\
     div#section_container\
       {{_.T("", reduce_section_data(section_obj))()}}\
+    div#result_container\
+      div.#result_section\
+        pre#console.javascript result\
   '),
   $,
   _(_.method, _, 'appendTo', $('body'))
 );
 
 
-$(document).ready(function() {
+$(function() {
   $('#no_result').hide();
 
   _.each($('textarea.input.code'), function(e) {
@@ -75,20 +80,36 @@ $(document).ready(function() {
       });
   });
 
-  // $('#listbar .gr_li:last').prepend("<a href='template.html' target='_blank'><button id='try'><span>TRY</span></button></a>")
-
   /* Event listener functions */
   $('#search').keyup(function(e) { update_section_list($(e.target).val()); });
 
   $('#listbar i.fa').click(function(e) {
-    var F_list = e.target.nextSibling.nextSibling;
+    var icon = e.target, F_list = e.target.nextSibling.nextSibling;
+    if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); icon.className = "fa fa-minus-square-o";}
+    else { show(F_list); icon.className = "fa fa-plus-square-o"; }
+  });
 
-    if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); e.target.className = "fa fa-minus-square-o";}
-    else { show(F_list); e.target.className = "fa fa-plus-square-o"; }
+  $('#container').on('click', 'button.try', function() {
+    var code = $(this.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, 'logResult');
+    $('pre#console').empty();
+    (new Function(code))()
   });
 });
 
-var open_marpple = function() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; };
+function logResult(v) {
+  if (arguments.length > 1) {
+    return $('pre#console').append(_.reduce(arguments, function(memo, v) {
+      if (_.isFunction(v)) return memo + v.toString;
+      if (_.isString(v) || !isNaN(v)) return memo + v;
+      return memo + JSON.stringify(v);
+    }, '') + '\n');
+  } else {
+    if (_.isFunction(v)) return $('pre#console').append(v.toString + '\n');
+    if (_.isString(v) || !isNaN(v)) return $('pre#console').append(v + '\n');
+    return $('pre#console').append(JSON.stringify(v) + '\n');
+  }
+}
+function open_marpple() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; }
 function hide(e) { $(e).hide(); }
 function show(e) { $(e).show(); }
 function showAll(e, childName) { $(e).find(childName).show(); $(e).show(); $('#no_result').hide(); }

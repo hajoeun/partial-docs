@@ -105,15 +105,14 @@ var section_obj = {
   collection: {
     title: 'Collection',
     funcs: {
-      partial: {
-        title: 'partial',
-        usage: '_.partial(func, arg1, arg2, ...)',
+      each: {
+        title: 'each',
+        usage: '_.each(collection, iteratee, limiter)',
         egs: [{
-          ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
+          ds: "`_.each`는 콜렉션을 순회하는 함수입니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+              |var arr = [1,2,3,4,5,6,7];\
+                  |_.each(arr, function(v) { console.log(v); });"
         }]
       },
       pipe: {
@@ -136,7 +135,7 @@ var section_obj = {
     title: 'Array',
     funcs: {
       partial: {
-        title: 'partial',
+        title: 'partial3',
         usage: '_.partial(func, arg1, arg2, ...)',
         egs: [{
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
@@ -147,7 +146,7 @@ var section_obj = {
         }]
       },
       pipe: {
-        title: 'pipe',
+        title: 'pipe3',
         usage: '_.pipe(args, func1, func2, func3, ...)',
         egs: [{
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
@@ -166,7 +165,7 @@ var section_obj = {
     title: 'Object',
     funcs: {
       partial: {
-        title: 'partial',
+        title: 'partial4',
         usage: '_.partial(func, arg1, arg2, ...)',
         egs: [{
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
@@ -177,7 +176,7 @@ var section_obj = {
         }]
       },
       pipe: {
-        title: 'pipe',
+        title: 'pipe4',
         usage: '_.pipe(args, func1, func2, func3, ...)',
         egs: [{
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
@@ -196,7 +195,7 @@ var section_obj = {
     title: 'Utility',
     funcs: {
       partial: {
-        title: 'partial',
+        title: 'partial5',
         usage: '_.partial(func, arg1, arg2, ...)',
         egs: [{
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
@@ -207,7 +206,7 @@ var section_obj = {
         }]
       },
       pipe: {
-        title: 'pipe',
+        title: 'pipe6',
         usage: '_.pipe(args, func1, func2, func3, ...)',
         egs: [{
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
@@ -226,7 +225,7 @@ var section_obj = {
     title: 'Template',
     funcs: {
       partial: {
-        title: 'partial',
+        title: 'partial7',
         usage: '_.partial(func, arg1, arg2, ...)',
         egs: [{
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
@@ -237,7 +236,7 @@ var section_obj = {
         }]
       },
       pipe: {
-        title: 'pipe',
+        title: 'pipe8',
         usage: '_.pipe(args, func1, func2, func3, ...)',
         egs: [{
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
