@@ -125,7 +125,16 @@ ul.func_list .fn_li {
   float: left;
 }
 
-#result_container pre#console {
+#result_container #result_section {
+  position: fixed;
+  left: 73vw;
+  padding: 0;
+  margin: 50px;
+  height: 200px;
+  width: 20vw;
+}
+
+#result_section pre#console {
   display: block;
   overflow-x: auto;
   padding: 1em;
@@ -137,16 +146,7 @@ ul.func_list .fn_li {
   border-radius: 4px;
   height: 100%;
   width: 100%;
-}
-
-#result_container #result_section {
-  position: fixed;
-  bottom: 35vh;
-  left: 73vw;
-  padding: 0;
-  margin: 50px;
-  height: 200px;
-  width: 20vw;
+  resize: vertical;
 }
 
 @media screen and (max-width: 1200px) {
@@ -168,6 +168,7 @@ ul.func_list .fn_li {
     left: 230px;
     height: 80px;
     width: 100%;
+    z-index: 4;
   }
   #result_container #result_section {
     position: relative;
@@ -227,6 +228,7 @@ button.try {
   cursor: pointer;
   transition: all 0.5s;
   outline: none;
+  box-shadow: 0px 0px 0px #ccc;
 }
 
 button.try > span {
@@ -236,21 +238,22 @@ button.try > span {
   transition: 0.5s;
 }
 
-button.try > span:after {
-  content: '»';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -10px;
-  transition: 0.5s;
+/*button.try > span:after {*/
+  /*!*content: '>';*!*/
+  /*position: absolute;*/
+  /*opacity: 0;*/
+  /*top: 0;*/
+  /*right: -10px;*/
+  /*transition: 0.5s;*/
+/*}*/
+
+button.try:hover {
+  box-shadow: 3px 3px 10px #ccc;
 }
 
-button.try:hover span {
-  padding-right: 10px;
-}
-
-button.try:hover span:after {
-  opacity: 1;
-  right: 0;
-}
+/*button.try:hover span:after {*/
+  /*!*opacity: 1;*!*/
+  /*!*right: 0;*!*/
+  /*box-shadow: 2px 2px 1px #ccc;*/
+/*}*/
 

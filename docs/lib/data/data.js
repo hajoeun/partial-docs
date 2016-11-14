@@ -115,18 +115,14 @@ var section_obj = {
                   |_.each(arr, function(v) { console.log(v); });"
         }]
       },
-      pipe: {
-        title: 'pipe',
-        usage: '_.pipe(args, func1, func2, func3, ...)',
+      map: {
+        title: 'map',
+        usage: '_.map(collection, iteratee, limiter)',
         egs: [{
-          ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
+          ds: "`_.map`은 콜렉션을 순회하며 새로운 함수를 반환하는 함수입니다.",
           cd: "\
-              |var res = _.pipe([1,2,3,4],\
-                   |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                   |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                   |____function(arg3) { return arg3 / 5; }\
-                   |__)\
-                   |console.log(res); // 10"
+              |var res = _.map([1,2,3,4,5,6,7], function(v) { return v * 10; });\
+                  |console.log(res); // [10,20,30,40,50,60,70]"
         }]
       }
     }
@@ -134,29 +130,22 @@ var section_obj = {
   array: {
     title: 'Array',
     funcs: {
-      partial: {
-        title: 'partial3',
-        usage: '_.partial(func, arg1, arg2, ...)',
+      first: {
+        title: 'first',
+        usage: '_.first(array)',
         egs: [{
-          ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
+          ds: "`_.first`는 배열의 첫번째 요소를 반환하는 함수입니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+              |console.log(_.first([5,4,3,2,1])); // 5"
         }]
       },
-      pipe: {
-        title: 'pipe3',
-        usage: '_.pipe(args, func1, func2, func3, ...)',
+      initial: {
+        title: 'initial',
+        usage: '_.initial(array)',
         egs: [{
-          ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
+          ds: "`_.initial`은 배열의 마지막 요소를 제외한 요소들을 반환하는 함수입니다.",
           cd: "\
-              |var res = _.pipe([1,2,3,4],\
-                   |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                   |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                   |____function(arg3) { return arg3 / 5; }\
-                   |__)\
-                   |console.log(res); // 10"
+              |console.log(_.initial([5,4,3,2,1])); // [5,4,3,2]"
         }]
       }
     }

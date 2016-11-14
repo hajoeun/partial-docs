@@ -92,7 +92,13 @@ $(function() {
   $('#container').on('click', 'button.try', function() {
     var code = $(this.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, 'logResult');
     $('pre#console').empty();
-    (new Function(code))()
+
+    try {
+      $('pre#console').css('color', 'greenyellow');
+      (new Function(code))();
+    } catch(e) {
+      $('pre#console').css('color', 'red').append(e);
+    }
   });
 });
 
