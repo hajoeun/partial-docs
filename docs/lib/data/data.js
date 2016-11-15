@@ -153,29 +153,24 @@ var section_obj = {
   object: {
     title: 'Object',
     funcs: {
-      partial: {
-        title: 'partial4',
-        usage: '_.partial(func, arg1, arg2, ...)',
+      keys: {
+        title: 'keys',
+        usage: '_.keys(object)',
         egs: [{
-          ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
+          ds: "`_.keys`는 객체가 가진 셀 수 있는 프로퍼티의 이름을 배열로 반환하는 함수입니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+              |var res = _.keys({a: 1, b: 2, c: 3});\
+                  |console.log(res); // [\"a\", \"b\", \"c\"]"
         }]
       },
-      pipe: {
-        title: 'pipe4',
-        usage: '_.pipe(args, func1, func2, func3, ...)',
+      values: {
+        title: 'values',
+        usage: '_.values(object)',
         egs: [{
-          ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
+          ds: "`_.values`는 객체가 가진 셀 수 있는 프로퍼티의 값을 배열로 반환하는 함수입니다.",
           cd: "\
-              |var res = _.pipe([1,2,3,4],\
-                   |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                   |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                   |____function(arg3) { return arg3 / 5; }\
-                   |__)\
-                   |console.log(res); // 10"
+              |var res = _.values({a: 1, b: 2, c: 3});\
+                  |console.log(res); // [1,2,3]"
         }]
       }
     }
@@ -183,29 +178,23 @@ var section_obj = {
   utility: {
     title: 'Utility',
     funcs: {
-      partial: {
-        title: 'partial5',
-        usage: '_.partial(func, arg1, arg2, ...)',
+      identity: {
+        title: 'identity',
+        usage: '_.identity(value)',
         egs: [{
-          ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
+          ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
         }]
       },
-      pipe: {
-        title: 'pipe6',
-        usage: '_.pipe(args, func1, func2, func3, ...)',
+      escape: {
+        title: 'escape',
+        usage: '_.escape(string)',
         egs: [{
-          ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
+          ds: "`_.escape`는 특정 엔티티값을 HTML에 삽입하기 위한 문자열로 변환해주는 함수입니다.",
           cd: "\
-              |var res = _.pipe([1,2,3,4],\
-                   |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                   |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                   |____function(arg3) { return arg3 / 5; }\
-                   |__)\
-                   |console.log(res); // 10"
+              |var res = _.escape('marpple & partial.js');\
+                  |console.log(res); // marpple &amp; partial.js "
         }]
       }
     }
@@ -213,29 +202,28 @@ var section_obj = {
   template: {
     title: 'Template',
     funcs: {
-      partial: {
-        title: 'partial7',
-        usage: '_.partial(func, arg1, arg2, ...)',
+      Template: {
+        title: 'Tamplate',
+        usage: '_.Template(templateValue, templateCode)',
         egs: [{
-          ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
+          ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+              |var templateResult = _.Template('str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+                  |$('#miniDom').html(templateResult('Hello world'));"
         }]
       },
-      pipe: {
-        title: 'pipe8',
-        usage: '_.pipe(args, func1, func2, func3, ...)',
+      template: {
+        title: 'template',
+        usage: '_.template(data, templateValue, templateCode)',
         egs: [{
-          ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
+          ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
-              |var res = _.pipe([1,2,3,4],\
-                   |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                   |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                   |____function(arg3) { return arg3 / 5; }\
-                   |__)\
-                   |console.log(res); // 10"
+              |var templateResult = _.template('Hello world', 'str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult); // <h1 >Hello world</h1>\
+                  |$('#miniDom').html(templateResult);"
         }]
       }
     }

@@ -1,7 +1,7 @@
 /* General functions */ var test;
 var make_func_list = _.T.each('d', '\
   a[href=#{{d}}]\
-    li.fn_li[data={{d}}] _.{{d}}');
+    li.fn_li[data=_.{{d}}] _.{{d}}');
 var make_group_list = _.T.each('obj', '\
   li.gr_li[data={{obj.title}}]\
     i.fa.fa-plus-square-o\
@@ -29,7 +29,7 @@ var reduce_section_data = function(data) {
                 textarea.input.code    '+ eg.cd : '')
           }, '');
       }, '');
-  }, '').replace(/\|(__+)/g, function(m, u) { return "|" + u.replace(/__/g, '&nbsp;&nbsp;'); }).replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
+  }, '').replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
 };
 
 /* HTML Rendering */
@@ -57,13 +57,16 @@ _.pipe(null,
     div#section_container\
       {{_.T("", reduce_section_data(section_obj))()}}\
     div#result_container\
-      div.#result_section\
-        pre#console.javascript result\
+      div#result_section\
+        pre#console.javascript console result\
+        div#miniDom#mini_dom.miniDom.mini_dom dom result\
   '),
+  convert,
   $,
   _(_.method, _, 'appendTo', $('body'))
 );
 
+function convert(str) { return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<(.*)\>\>/g, '{{$1}}') }
 
 $(function() {
   $('#no_result').hide();
@@ -90,29 +93,27 @@ $(function() {
   });
 
   $('#container').on('click', 'button.try', function() {
-    var code = $(this.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, 'logResult');
-    $('pre#console').empty();
+    var code = $(this.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\n\n/g, '\\\n');
 
     try {
-      $('pre#console').css('color', 'greenyellow');
-      (new Function(code))();
+      (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'greenyellow')[0].innerText = ___res___;"))();
     } catch(e) {
-      $('pre#console').css('color', 'red').append(e);
+      $('pre#console').css('color', 'red')[0].innerText = e;
     }
   });
 });
 
-function logResult(v) {
+function ___log___(v) {
   if (arguments.length > 1) {
-    return $('pre#console').append(_.reduce(arguments, function(memo, v) {
+    return (_.reduce(arguments, function(memo, v) {
       if (_.isFunction(v)) return memo + v.toString;
       if (_.isString(v) || !isNaN(v)) return memo + v;
       return memo + JSON.stringify(v);
     }, '') + '\n');
   } else {
-    if (_.isFunction(v)) return $('pre#console').append(v.toString + '\n');
-    if (_.isString(v) || !isNaN(v)) return $('pre#console').append(v + '\n');
-    return $('pre#console').append(JSON.stringify(v) + '\n');
+    if (_.isFunction(v)) return (v.toString + '\n');
+    if (_.isString(v) || !isNaN(v)) return (v + '\n');
+    return (JSON.stringify(v) + '\n');
   }
 }
 function open_marpple() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; }

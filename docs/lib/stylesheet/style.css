@@ -110,7 +110,6 @@ ul.func_list .fn_li {
   bottom: 0;
   right: 0;
   left: 240px;
-  height: 100%;
   overflow: auto;
 }
 
@@ -130,7 +129,7 @@ ul.func_list .fn_li {
   left: 73vw;
   padding: 0;
   margin: 50px;
-  height: 200px;
+  height: 420px;
   width: 20vw;
 }
 
@@ -144,43 +143,23 @@ ul.func_list .fn_li {
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
   font-size: 13px;
   border-radius: 4px;
-  height: 100%;
-  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  height: 49%;
+  width: 95%;
   resize: vertical;
 }
 
-@media screen and (max-width: 1200px) {
-  #container {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 240px;
-  }
-  #container > #section_container {
-    width: 100%;
-    float: left;
-  }
-  #container > #result_container {
-    float: none;
-    position: fixed;
-    bottom: 0;
-    left: 230px;
-    height: 80px;
-    width: 100%;
-    z-index: 4;
-  }
-  #result_container #result_section {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    padding: inherit;
-    margin: inherit;
-    height: 80px;
-    width: inherit;
-  }
+#result_section div#miniDom {
+  padding: 1em;
+  margin: 10px 0 0 0;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  height: 49%;
+  width: 95%;
+  overflow: auto;
+  resize: vertical;
 }
-
 
 #section_container > .outer_section {
   padding: 20px;
@@ -257,3 +236,49 @@ button.try:hover {
   /*box-shadow: 2px 2px 1px #ccc;*/
 /*}*/
 
+
+
+@media screen and (max-width: 1200px) {
+  #container {
+    position: fixed;
+    top: 0;
+    bottom: 100px;
+    right: 0;
+    left: 240px;
+  }
+  #container > #section_container {
+    width: 100%;
+    float: left;
+  }
+  #container > #result_container {
+    float: none;
+    position: fixed;
+    bottom: 0;
+    left: 230px;
+    height: 100px;
+    width: 100%;
+    z-index: 4;
+  }
+  #result_container #result_section {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    padding: inherit;
+    margin: inherit;
+    height: 100px;
+    width: inherit;
+  }
+
+  #result_section pre#console {
+    float: left;
+    height: 72px;
+    width: 30%;
+    resize: none;
+  }
+  #result_section div#miniDom {
+    height: 72px;
+    width: 45%;
+    margin-top: 0;
+    resize: none;
+  }
+}
