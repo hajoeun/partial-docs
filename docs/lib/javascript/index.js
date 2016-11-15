@@ -101,6 +101,35 @@ $(function() {
       $('pre#console').css('color', 'red')[0].innerText = e;
     }
   });
+
+  /*Key event handler*/
+  key_event();
+  function key_event() {
+    var key_cache = {};
+    $('.inner_section .code textarea').keydown(function(e) {
+      var T = "  ";
+
+      key_cache[e.which] = true;
+      if (key_cache[9]) { // tab was pressed
+        var start = this.selectionStart;
+        var end = this.selectionEnd;
+
+        var $this = $(this);
+        var value = $this.val();
+
+        $this.val(value.substring(0, start) + T + value.substring(end));
+
+        this.selectionStart = this.selectionEnd = start + T;
+        e.preventDefault();
+      } else if (key_cache[13] && key_cache[17]) {
+        $(e.currentTarget.closest('.inner_section')).find('.try').click();
+        delete key_cache[13]; delete key_cache[17];
+      }
+
+    });
+    $('.s_test > .data textarea, .s_test > .code textarea').keyup(function(e) { delete key_cache[e.which]; });
+    $(document).keyup(function(e) { delete key_cache[e.which]; });
+  }
 });
 
 function ___log___(v) {

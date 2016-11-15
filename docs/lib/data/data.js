@@ -194,7 +194,7 @@ var section_obj = {
           ds: "`_.escape`는 특정 엔티티값을 HTML에 삽입하기 위한 문자열로 변환해주는 함수입니다.",
           cd: "\
               |var res = _.escape('marpple & partial.js');\
-                  |console.log(res); // marpple &amp; partial.js "
+                  |console.log(res);"
         }]
       }
     }
