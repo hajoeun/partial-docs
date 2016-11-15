@@ -4,7 +4,7 @@ var make_func_list = _.T.each('d', '\
     li.fn_li[data=_.{{d}}] _.{{d}}');
 var make_group_list = _.T.each('obj', '\
   li.gr_li[data={{obj.title}}]\
-    i.fa.fa-plus-square-o\
+    i.fa.fa-minus-square-o\
     a[href=#{{obj.title}}].gr_title {{obj.title}}\
     ul.func_list\
       {{make_func_list(obj.data)}}');
@@ -18,7 +18,7 @@ var reduce_section_data = function(data) {
               p.gr_title '+ group
       + _.reduce(funcs, function(str2, func) {
         return str2 + '\
-              div.inner_section#' + func.title +'\
+              div.inner_section[id=' + func.title +']\
                 p.func_title ' + func.title+' \
                   small '+ func.usage
           + _.reduce(func.egs, function(str3, eg) {
@@ -59,7 +59,7 @@ _.pipe(null,
     div#result_container\
       div#result_section\
         pre#console.javascript console result\
-        div#miniDom#mini_dom.miniDom.mini_dom dom result\
+        div#mini_dom.miniDom.mini_dom dom result\
   '),
   convert,
   $,
@@ -69,7 +69,8 @@ _.pipe(null,
 function convert(str) { return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<(.*)\>\>/g, '{{$1}}') }
 
 $(function() {
-  $('#no_result').hide();
+  $('#no_result:visible').hide();
+  $('#mini_dom:visible').hide();
 
   _.each($('textarea.input.code'), function(e) {
     return CodeMirror(function(t) {
@@ -88,23 +89,25 @@ $(function() {
 
   $('#listbar i.fa').click(function(e) {
     var icon = e.target, F_list = e.target.nextSibling.nextSibling;
-    if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); icon.className = "fa fa-minus-square-o";}
-    else { show(F_list); icon.className = "fa fa-plus-square-o"; }
+    if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); icon.className = "fa fa-plus-square-o";}
+    else { show(F_list); icon.className = "fa fa-minus-square-o"; }
   });
 
-  $('#container').on('click', 'button.try', function() {
-    var code = $(this.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\n\n/g, '\\\n');
+  var click_try_btn = function(e) {
+    var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\n\n/g, '\\\n');
 
     try {
       (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'greenyellow')[0].innerText = ___res___;"))();
     } catch(e) {
       $('pre#console').css('color', 'red')[0].innerText = e;
     }
-  });
+  };
+
+  $('.outer_section:not(#Template)').on('click', 'button.try', function(e) { $('#mini_dom:visible').slideUp(100); click_try_btn(e); });
+  $('#Template').on('click', 'button.try', function(e) { $('#mini_dom:hidden').slideDown(100); click_try_btn(e); });
 
   /*Key event handler*/
-  key_event();
-  function key_event() {
+  (function key_event() {
     var key_cache = {};
     $('.inner_section .code textarea').keydown(function(e) {
       var T = "  ";
@@ -129,7 +132,7 @@ $(function() {
     });
     $('.s_test > .data textarea, .s_test > .code textarea').keyup(function(e) { delete key_cache[e.which]; });
     $(document).keyup(function(e) { delete key_cache[e.which]; });
-  }
+  })();
 });
 
 function ___log___(v) {
@@ -145,11 +148,11 @@ function ___log___(v) {
     return (JSON.stringify(v) + '\n');
   }
 }
-function open_marpple() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; }
-function hide(e) { $(e).hide(); }
-function show(e) { $(e).show(); }
-function showAll(e, childName) { $(e).find(childName).show(); $(e).show(); $('#no_result').hide(); }
 function update_section_list(str) {
+  function open_marpple() { window.open('http://www.marpple.com/', '_blank'); open_marpple = void 0; }
+  function hide(e) { $(e).hide(); }
+  function show(e) { $(e).show(); }
+  function showAll(e, childName) { $(e).find(childName).show(); $(e).show(); $('#no_result').hide(); }
 
   str = str.replace(/\s*([?\w]+)\s*/,'$1'); // Trim
   if (!str) return (showAll('#listbar', 'li'));

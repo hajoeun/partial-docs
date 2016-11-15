@@ -211,7 +211,7 @@ var section_obj = {
               |var templateResult = _.Template('str', '\n\
                   |__h1 <<str>>');\
                   |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
-                  |$('#miniDom').html(templateResult('Hello world'));"
+                  |$('#mini_dom').html(templateResult('Hello world'));"
         }]
       },
       template: {
@@ -223,7 +223,79 @@ var section_obj = {
               |var templateResult = _.template('Hello world', 'str', '\n\
                   |__h1 <<str>>');\
                   |console.log(templateResult); // <h1 >Hello world</h1>\
-                  |$('#miniDom').html(templateResult);"
+                  |$('#mini_dom').html(templateResult);"
+        }]
+      },
+      String: {
+        title: 'String',
+        usage: '_.Template(templateValue, templateCode)',
+        egs: [{
+          ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
+          cd: "\
+              |var templateResult = _.Template('str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+                  |$('#mini_dom').html(templateResult('Hello world'));"
+        }]
+      },
+      string: {
+        title: 'string',
+        usage: '_.template(data, templateValue, templateCode)',
+        egs: [{
+          ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
+          cd: "\
+              |var templateResult = _.template('Hello world', 'str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult); // <h1 >Hello world</h1>\
+                  |$('#mini_dom').html(templateResult);"
+        }]
+      },
+      Template_each: {
+        title: 'Template.each',
+        usage: '_.Template(templateValue, templateCode)',
+        egs: [{
+          ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
+          cd: "\
+              |var templateResult = _.Template('str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+                  |$('#mini_dom').html(templateResult('Hello world'));"
+        }]
+      },
+      template_each: {
+        title: 'template.each',
+        usage: '_.template(data, templateValue, templateCode)',
+        egs: [{
+          ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
+          cd: "\
+              |var templateResult = _.template('Hello world', 'str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult); // <h1 >Hello world</h1>\
+                  |$('#mini_dom').html(templateResult);"
+        }]
+      },
+      String_each: {
+        title: 'String.each',
+        usage: '_.Template(templateValue, templateCode)',
+        egs: [{
+          ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
+          cd: "\
+              |var templateResult = _.Template('str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+                  |$('#mini_dom').html(templateResult('Hello world'));"
+        }]
+      },
+      string_each: {
+        title: 'string.each',
+        usage: '_.template(data, templateValue, templateCode)',
+        egs: [{
+          ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
+          cd: "\
+              |var templateResult = _.template('Hello world', 'str', '\n\
+                  |__h1 <<str>>');\
+                  |console.log(templateResult); // <h1 >Hello world</h1>\
+                  |$('#mini_dom').html(templateResult);"
         }]
       }
     }
