@@ -1,4 +1,4 @@
-/* General functions */ var test;
+/* General functions */
 var make_func_list = _.T.each('d', '\
   a[href=#{{d}}]\
     li.fn_li[data=_.{{d}}] _.{{d}}');
@@ -96,7 +96,7 @@ $(function() {
   $('.outer_section').on('click', 'button.try', function(e) {
     var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\u200B\n/g,'');
     code.match(/\$\([\"\']#mini_dom[\"\']\)/) ? $('#mini_dom:hidden').slideDown(100) : $('#mini_dom:visible').slideUp(100);
-    console.log(test = code);
+
     try {
       (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'limegreen').text(___res___);"))();
     } catch(e) {
