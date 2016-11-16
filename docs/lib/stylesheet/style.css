@@ -110,7 +110,7 @@ ul.func_list .fn_li {
   top: 0;
   bottom: 0;
   right: 0;
-  left: 240px;
+  left: 250px;
   overflow: auto;
 }
 
@@ -140,7 +140,7 @@ ul.func_list .fn_li {
   padding: 1em;
   margin: 0;
   background: #2b2b2b;
-  color: limegreen;
+  color: #bababa;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
   font-size: 13px;
   border-radius: 4px;
@@ -224,17 +224,10 @@ button.try:hover {
 
 
 @media screen and (max-width: 1200px) {
-  #sidebar {
+  #sidebar, #container {
     bottom: 100px;
   }
 
-  #container {
-    position: fixed;
-    top: 0;
-    bottom: 100px;
-    right: 0;
-    left: 240px;
-  }
   #container > #section_container {
     width: 100%;
     float: left;

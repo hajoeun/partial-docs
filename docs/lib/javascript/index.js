@@ -97,7 +97,7 @@ $(function() {
     var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\n\n/g, '\\\n');
 
     try {
-      (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'greenyellow')[0].innerText = ___res___;"))();
+      (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'limegreen')[0].innerText = ___res___;"))();
     } catch(e) {
       $('pre#console').css('color', 'red')[0].innerText = e;
     }
