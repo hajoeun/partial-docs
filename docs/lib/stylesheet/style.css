@@ -15,7 +15,6 @@ body {
   left: 0;
   bottom: 0;
   width: 230px;
-  /*height: 100%;*/
   overflow-y: auto;
   overflow-x: hidden;
   border-right: 1px solid rgba(0, 0, 0, 0.14);
@@ -141,7 +140,7 @@ ul.func_list .fn_li {
   padding: 1em;
   margin: 0;
   background: #2b2b2b;
-  color: greenyellow;
+  color: limegreen;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
   font-size: 13px;
   border-radius: 4px;
@@ -200,7 +199,6 @@ button.try {
   float: right;
   border-radius: 4px;
   display: inline-block;
-  background-color: #5cb85c;
   border: none;
   color: #fff;
   text-align: center;
@@ -219,25 +217,10 @@ button.try > span {
   transition: 0.5s;
 }
 
-/*button.try > span:after {*/
-  /*!*content: '>';*!*/
-  /*position: absolute;*/
-  /*opacity: 0;*/
-  /*top: 0;*/
-  /*right: -10px;*/
-  /*transition: 0.5s;*/
-/*}*/
-
 button.try:hover {
+  background-color: limegreen;
   box-shadow: 3px 3px 10px #ccc;
 }
-
-/*button.try:hover span:after {*/
-  /*!*opacity: 1;*!*/
-  /*!*right: 0;*!*/
-  /*box-shadow: 2px 2px 1px #ccc;*/
-/*}*/
-
 
 
 @media screen and (max-width: 1200px) {

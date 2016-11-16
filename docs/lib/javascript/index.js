@@ -24,7 +24,7 @@ var reduce_section_data = function(data) {
           + _.reduce(func.egs, function(str3, eg) {
             return str3 + '\
                 button.try\
-                  span Try\
+                  i.fa.fa-play\
                 p '+ eg.ds + (eg.cd ? '\
                 textarea.input.code    '+ eg.cd : '')
           }, '');
