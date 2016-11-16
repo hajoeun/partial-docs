@@ -93,18 +93,16 @@ $(function() {
     else { show(F_list); icon.className = "fa fa-minus-square-o"; }
   });
 
-  var click_try_btn = function(e) {
+  $('.outer_section').on('click', 'button.try', function(e) {
     var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\n\n/g, '\\\n');
+    code.match(/\$\([\"|\']#mini_dom[\"|\']\)/) ? $('#mini_dom:hidden').slideDown(100) : $('#mini_dom:visible').slideUp(100);
 
     try {
       (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'limegreen')[0].innerText = ___res___;"))();
     } catch(e) {
       $('pre#console').css('color', 'red')[0].innerText = e;
     }
-  };
-
-  $('.outer_section:not(#Template)').on('click', 'button.try', function(e) { $('#mini_dom:visible').slideUp(100); click_try_btn(e); });
-  $('#Template').on('click', 'button.try', function(e) { $('#mini_dom:hidden').slideDown(100); click_try_btn(e); });
+  });
 
   /*Key event handler*/
   (function key_event() {
