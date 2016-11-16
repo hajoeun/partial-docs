@@ -70,8 +70,11 @@ _.pipe(null,
   _(_.method, _, 'appendTo', $('body'))
 );
 
-function convert(str) { return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<(.*)\>\>/g, '{{$1}}') }
+function convert(str) {
+  return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<\<(.*)\>\>\>/g, '{{{$1}}}').replace(/\<\<(.*)\>\>/g, '{{$1}}')
+}
 
+/* After document ready */
 $(function() {
   $('#no_result:visible').hide();
   $('#mini_dom:visible').hide();
