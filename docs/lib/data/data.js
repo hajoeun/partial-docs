@@ -72,6 +72,36 @@ var sync = {
 
 /* Sections Data */
 var section_obj = {
+  pipe: {
+    title: 'Pipe',
+    funcs: {
+      right: {
+        title: 'right',
+        usage: '_.right(func, arg1, arg2, ...)',
+        egs: [{
+          ds: "`_.right`는...",
+          cd: "\
+              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
+                  |var res = map10([1,2,3,4]);\
+                  |console.log(res); // [11,12,13,14]"
+        }]
+      },
+      righta: {
+        title: 'righta',
+        usage: '_.righta(args, func1, func2, func3, ...)',
+        egs: [{
+          ds: "`_.righta`는...",
+          cd: "\
+               |var res = _.pipe([1,2,3,4],\
+                  |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                  |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                  |____function(arg3) { return arg3 / 5; }\
+                  |__)\
+                  |console.log(res); // 10"
+        }]
+      }
+    }
+  },
   function: {
     title: 'Function',
     funcs: {

@@ -21,12 +21,35 @@ body {
 }
 
 #logo {
-  padding: 20px;
+  padding: 30px 20px 30px 25px;
 }
 
-#logo > span {
+#logo #title {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 400;
+}
+
+#logo > #underline {
+  padding-top: 3px;
+}
+
+#logo > #underline #_left {
+  float: left;
+  height: 5px;
+  width: 64px;
+  background-color: #e0c46c;
+}
+
+#logo > #underline #_right {
+  float: left;
+  height: 5px;
+  width: 64px;
+  background-color: #cb7832;
+}
+
+#logo #version {
+  font-size: 14px;
+  color: #777;
 }
 
 #listbar {
@@ -102,6 +125,19 @@ ul.func_list .fn_li {
 #about li {
   display: inline;
   margin-right: 5px;
+}
+
+#about a {
+  text-decoration: none;
+}
+
+#about a:hover {
+  text-decoration: underline;
+  color: #cb7832;
+}
+
+#about a:visited {
+  color: black;
 }
 
 /* Container */
@@ -223,11 +259,11 @@ button.try:hover {
 }
 
 
+/* Responsive Style */
 @media screen and (max-width: 1200px) {
   #sidebar, #container {
     bottom: 100px;
   }
-
   #container > #section_container {
     width: 100%;
     float: left;
@@ -252,11 +288,10 @@ button.try:hover {
     background: #2b2b2b;
     border-radius: 4px;
   }
-
   #result_section pre#console {
     float: left;
     height: 72px;
-    width: 45%;
+    width: 40%;
     resize: none;
     border: none;
     margin-left: 10px;
@@ -265,8 +300,23 @@ button.try:hover {
   #result_section div#mini_dom {
     float: right;
     height: 72px;
-    width: 48%;
+    width: 50%;
     margin-top: 0;
     resize: none;
+  }
+}
+
+@media screen and (max-width: 810px) {
+  #container > #section_container {
+    width: 560px;
+  }
+  #container > #result_container {
+    width: 810px;
+  }
+  #result_section pre#console {
+    width: 300px;
+  }
+  #result_section div#mini_dom {
+    width: 400px;
   }
 }

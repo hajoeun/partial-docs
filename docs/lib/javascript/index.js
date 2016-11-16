@@ -37,7 +37,11 @@ _.pipe(null,
   _.T('', '\
   div#sidebar\
     div#logo\
-      span Partial JS\
+      span#title Partial.js \
+      span#version 1.0\
+      div#underline\
+        div#_left\
+        div#_right\
     div#listbar\
       div#search\
         input[type="text" placeholder="Search Functions" autofocus]\
@@ -50,7 +54,7 @@ _.pipe(null,
         li\
           a[href=""] About\
         li\
-          a[href=""] Repository\
+          a[href="https://github.com/marpple/partial.js"] Repository\
         li\
           a[href=""] Book\
   div#container\
