@@ -89,13 +89,13 @@ $(function() {
 
   $('#listbar i.fa').click(function(e) {
     var icon = e.target, F_list = e.target.nextSibling.nextSibling;
-    if (!F_list.style.display || (F_list.style.display == 'block')) { hide(F_list); icon.className = "fa fa-plus-square-o";}
-    else { show(F_list); icon.className = "fa fa-minus-square-o"; }
+    if (!F_list.style.display || (F_list.style.display == 'block')) { $(F_list).slideUp(200); icon.className = "fa fa-plus-square-o";}
+    else { $(F_list).slideDown(200); icon.className = "fa fa-minus-square-o"; }
   });
 
   $('.outer_section').on('click', 'button.try', function(e) {
     var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\u200B\n/g,'');
-    code.match(/\$\([\"\']#mini_dom[\"\']\)/) ? $('#mini_dom:hidden').slideDown(100) : $('#mini_dom:visible').slideUp(100);
+    code.match(/\$\([\"\']#mini_dom[\"\']\)/) ? $('#mini_dom:hidden').fadeIn(200) : $('#mini_dom:visible').fadeOut(200);
 
     try {
       (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'limegreen').text(___res___);"))();
