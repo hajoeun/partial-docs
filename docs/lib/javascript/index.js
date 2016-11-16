@@ -94,13 +94,13 @@ $(function() {
   });
 
   $('.outer_section').on('click', 'button.try', function(e) {
-    var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\n\n/g, '\\\n');
-    code.match(/\$\([\"|\']#mini_dom[\"|\']\)/) ? $('#mini_dom:hidden').slideDown(100) : $('#mini_dom:visible').slideUp(100);
-
+    var code = $(e.currentTarget.closest('div')).find('.CodeMirror-code')[0].innerText.replace(/(console\.log)/g, '___res___ += ___log___').replace(/\u200B\n/g,'');
+    code.match(/\$\([\"\']#mini_dom[\"\']\)/) ? $('#mini_dom:hidden').slideDown(100) : $('#mini_dom:visible').slideUp(100);
+    console.log(test = code);
     try {
-      (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'limegreen')[0].innerText = ___res___;"))();
+      (new Function("var ___res___ = '';" + code + "$('pre#console').css('color', 'limegreen').text(___res___);"))();
     } catch(e) {
-      $('pre#console').css('color', 'red')[0].innerText = e;
+      $('pre#console').css('color', 'red').text(e);
     }
   });
 
