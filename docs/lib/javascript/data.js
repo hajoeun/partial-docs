@@ -47,18 +47,34 @@ var sync = {
     data: ["first", "initial", "last", "rest", "compact", "flatten", "without", "union", "intersection", "difference", "uniq", "zip", "unzip",
            "object", "indexOf", "lastIndexOf", "sortedIndex", "findIndex", "findLastIndex", "range", "removeByIndex", "pop", "shift", "push", "unshift"]
   },
-  obj: {
+  object: {
     title: "Object",
     data: ["keys", "values", "mapObject", "pairs", "invert", "functions", "findKey", "extend", "pick", "omit", "defaults", "clone", "Tap", "has", "method", "set", "unset", "remove",
       "isEqual", "isMatch", "isEmpty", "isElement", "isArray", "isObject", "isArguments", "isFunction", "isString", "isNumber", "isDate", "isRegExp", "isError", "isArrayLike"]
   },
-  util: {
+  utility: {
     title: "Utility",
     data: ["identity", "escape", "unescape", "uniqueId", "Always", "noop", "args0", "args1", "args2", "args3", "args4", "args5", "true", "false", "null", "not", "nnot", "log", "loge", "Hi", "f"]
   },
-  tem: {
+  template: {
     title: "Template",
     data: ["Template", "Template$", "template", "template$", "String", "String$", "string", "string$", "Template.each", "template.each", "String.each", "string.each"]
+  },
+  selector: {
+    title: "Selector",
+    data: ["select"]
+  },
+  mutable: {
+    title: "Mutable",
+    data: ["push", "remove"]
+  },
+  immutable: {
+    title: "Immutable",
+    data: ["push", "remove"]
+  },
+  box: {
+    title: "Box",
+    data: ["push"]
   }
 };
 
@@ -326,6 +342,64 @@ var section_obj = {
                   |__h1 <<str>>');\
                   |console.log(templateResult); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult);"
+        }]
+      }
+    }
+  },
+  selector: {
+    title: 'Selector',
+    funcs: {
+      sel: {
+        title: 'select',
+        usage: '_.select(start, selector)',
+        egs: [{
+          ds: "`_.select`는 원하는 요소를 선택하는 함수입니다.",
+          cd: "\
+              |var obj = {a: 1, b: 2, c: {c1: 10, c2: 20, c3: 30}};\
+                  |var sel = _.select(obj, 'c->$==10');\
+                  |console.log(sel);"
+        }]
+      }
+    }
+  },
+  mutable: {
+    title: 'Mutable',
+    funcs: {
+      push: {
+        title: 'push',
+        usage: '_.identity(value)',
+        egs: [{
+          ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
+          cd: "\
+              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
+        }]
+      }
+    }
+  },
+  immutable: {
+    title: 'Immutable',
+    funcs: {
+      push: {
+        title: 'push',
+        usage: '_.identity(value)',
+        egs: [{
+          ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
+          cd: "\
+              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
+        }]
+      }
+    }
+  },
+  box: {
+    title: 'Box',
+    funcs: {
+      push: {
+        title: 'push',
+        usage: '_.identity(value)',
+        egs: [{
+          ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
+          cd: "\
+              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
         }]
       }
     }

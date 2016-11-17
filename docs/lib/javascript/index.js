@@ -1,13 +1,13 @@
 /* General functions */
-var make_func_list = _.T.each('d', '\
-  a[href=#{{d}}]\
+var make_func_list = _.T.each('d, k, l, t', '\
+  a[href=#{{t}}_{{d}}]\
     li.fn_li[data=_.{{d}}] _.{{d}}');
 var make_group_list = _.T.each('obj', '\
   li.gr_li[data={{obj.title}}]\
     i.fa.fa-minus-square-o\
     a[href=#{{obj.title}}].gr_title {{obj.title}}\
     ul.func_list\
-      {{make_func_list(obj.data)}}');
+      {{make_func_list(obj.data, obj.title)}}');
 var reduce_section_data = function(data) {
   return _.reduce(_.keys(data), function(memo, key) {
     var section_values = _.values(data[key]);
@@ -18,7 +18,7 @@ var reduce_section_data = function(data) {
               p.gr_title '+ group
       + _.reduce(funcs, function(str2, func) {
         return str2 + '\
-              div.inner_section[id=' + func.title +']\
+              div.inner_section[id=' + group + '_' + func.title + ']\
                 p.func_title ' + func.title+' \
                   small '+ func.usage
           + _.reduce(func.egs, function(str3, eg) {

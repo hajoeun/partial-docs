@@ -35,16 +35,18 @@ body {
 
 #logo > #underline #_left {
   float: left;
-  height: 5px;
+  height: 6px;
   width: 64px;
-  background-color: #e0c46c;
+  /*background-color: #e0c46c;*/
+  background-color: #FFC66D;
 }
 
 #logo > #underline #_right {
   float: left;
-  height: 5px;
+  height: 6px;
   width: 64px;
-  background-color: #cb7832;
+  /*background-color: #cb7832;*/
+  background-color: #B179CD;
 }
 
 #logo #version {
@@ -133,7 +135,7 @@ ul.func_list .fn_li {
 
 #about a:hover {
   text-decoration: underline;
-  color: #cb7832;
+  color: #cb7832 !important;
 }
 
 #about a:visited {
