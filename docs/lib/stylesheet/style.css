@@ -119,7 +119,7 @@ ul.func_list .fn_li {
 }
 
 #listbar a:hover {
-  font-weight: bold;
+  text-decoration: underline;
 }
 
 #no_result {
