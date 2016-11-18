@@ -31,11 +31,15 @@ var undef = ["Err", "callback", "cb", "this","mr", "to_mr", "is_mr", "val",
 var sync = {
   pipe: {
     title: "Pipe",
-    data: ["right", "righta", "Pipe", "pipe", "pipec", "pipea", "pipea2", "all", "spread", "Indent"]
+    data: ["Pipe", "pipe", "pipec", "pipea", "pipea2", "mr", "to_mr", "mr_cat", "all", "spread", "Indent", "Tap"]
+  },
+  partial: {
+    title: "_ __ ___",
+    data: ["partial", "_", "__", "___"]
   },
   func: {
     title: "Function",
-    data: ["partial", "memoize", "delay", "defer", "once",  "after", "before", "negate"]
+    data: ["memoize", "delay", "defer", "once",  "after", "before", "negate", "right", "righta"]
   },
   coll: {
     title: "Collection",
@@ -75,6 +79,10 @@ var sync = {
   box: {
     title: "Box",
     data: ["push"]
+  },
+  async: {
+    title: "Async",
+    data: ["async.Pipe", "cb", "async", "Collection"]
   }
 };
 
@@ -83,8 +91,6 @@ var sync = {
  "Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
  "Template.each", "template.each", "String.each", "string.each"];
 */
-
-
 
 /* Sections Data */
 var section_obj = {
@@ -405,6 +411,3 @@ var section_obj = {
     }
   }
 };
-
-
-
