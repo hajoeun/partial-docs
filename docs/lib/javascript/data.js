@@ -103,9 +103,9 @@ var section_obj = {
         egs: [{
           ds: "`_.right`는...",
           cd: "\
-            |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-            |var res = map10([1,2,3,4]);\
-            |console.log(res); // [11,12,13,14]"
+              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
+              |var res = map10([1,2,3,4]);\
+              |console.log(res); // [11,12,13,14]"
         }]
       },
       righta: {
