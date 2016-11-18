@@ -103,9 +103,9 @@ var section_obj = {
         egs: [{
           ds: "`_.right`는...",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+            |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
+            |var res = map10([1,2,3,4]);\
+            |console.log(res); // [11,12,13,14]"
         }]
       },
       righta: {
@@ -114,12 +114,12 @@ var section_obj = {
         egs: [{
           ds: "`_.righta`는...",
           cd: "\
-               |var res = _.pipe([1,2,3,4],\
-                  |----function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                  |----function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                  |----function(arg3) { return arg3 / 5; }\
-                  |--)\
-                  |console.log(res); // 10"
+            |var res = _.pipe([1,2,3,4],\
+            |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+            |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+            |--function(arg3) { return arg3 / 5; }\
+            |);\
+            |console.log(res); // 10"
         }]
       }
     }
@@ -133,9 +133,9 @@ var section_obj = {
         egs: [{
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+            |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
+            |var res = map10([1,2,3,4]);\
+            |console.log(res); // [11,12,13,14]"
         }]
       },
       pipe: {
@@ -144,12 +144,12 @@ var section_obj = {
         egs: [{
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
           cd: "\
-               |var res = _.pipe([1,2,3,4],\
-                  |----function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                  |----function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                  |----function(arg3) { return arg3 / 5; }\
-                  |--)\
-                  |console.log(res); // 10"
+            |var res = _.pipe([1,2,3,4],\
+            |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+            |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+            |--function(arg3) { return arg3 / 5; }\
+            |);\
+            |console.log(res); // 10"
         }]
       }
     }
@@ -163,8 +163,8 @@ var section_obj = {
         egs: [{
           ds: "`_.each`는 콜렉션을 순회하는 함수입니다.",
           cd: "\
-              |var arr = [1,2,3,4,5,6,7];\
-                  |_.each(arr, function(v) { console.log(v); });"
+            |var arr = [1,2,3,4,5,6,7];\
+            |_.each(arr, function(v) { console.log(v); });"
         }]
       },
       map: {
@@ -173,8 +173,8 @@ var section_obj = {
         egs: [{
           ds: "`_.map`은 콜렉션을 순회하며 새로운 함수를 반환하는 함수입니다.",
           cd: "\
-              |var res = _.map([1,2,3,4,5,6,7], function(v) { return v * 10; });\
-                  |console.log(res); // [10,20,30,40,50,60,70]"
+            |var res = _.map([1,2,3,4,5,6,7], function(v) { return v * 10; });\
+            |console.log(res); // [10,20,30,40,50,60,70]"
         }]
       }
     }
@@ -211,8 +211,8 @@ var section_obj = {
         egs: [{
           ds: "`_.keys`는 객체가 가진 셀 수 있는 프로퍼티의 이름을 배열로 반환하는 함수입니다.",
           cd: "\
-              |var res = _.keys({a: 1, b: 2, c: 3});\
-                  |console.log(res); // [\"a\", \"b\", \"c\"]"
+            |var res = _.keys({a: 1, b: 2, c: 3});\
+            |console.log(res); // [\"a\", \"b\", \"c\"]"
         }]
       },
       values: {
@@ -221,8 +221,8 @@ var section_obj = {
         egs: [{
           ds: "`_.values`는 객체가 가진 셀 수 있는 프로퍼티의 값을 배열로 반환하는 함수입니다.",
           cd: "\
-              |var res = _.values({a: 1, b: 2, c: 3});\
-                  |console.log(res); // [1,2,3]"
+            |var res = _.values({a: 1, b: 2, c: 3});\
+            |console.log(res); // [1,2,3]"
         }]
       }
     }
@@ -236,7 +236,7 @@ var section_obj = {
         egs: [{
           ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
           cd: "\
-              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
+            |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
         }]
       },
       escape: {
@@ -245,8 +245,8 @@ var section_obj = {
         egs: [{
           ds: "`_.escape`는 특정 엔티티값을 HTML에 삽입하기 위한 문자열로 변환해주는 함수입니다.",
           cd: "\
-              |var res = _.escape('marpple & partial.js');\
-                  |console.log(res);"
+            |var res = _.escape('marpple & partial.js');\
+            |console.log(res);"
         }]
       }
     }
@@ -260,10 +260,10 @@ var section_obj = {
         egs: [{
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
-              |var templateResult = _.Template('str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult('Hello world'));"
+            |var templateResult = _.Template('str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult('Hello world'));"
         }]
       },
       template: {
@@ -272,10 +272,10 @@ var section_obj = {
         egs: [{
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
-              |var templateResult = _.template('Hello world', 'str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult);"
+            |var templateResult = _.template('Hello world', 'str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult);"
         }]
       },
       String: {
@@ -284,10 +284,10 @@ var section_obj = {
         egs: [{
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
-              |var templateResult = _.Template('str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult('Hello world'));"
+            |var templateResult = _.Template('str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult('Hello world'));"
         }]
       },
       string: {
@@ -296,10 +296,10 @@ var section_obj = {
         egs: [{
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
-              |var templateResult = _.template('Hello world', 'str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult);"
+            |var templateResult = _.template('Hello world', 'str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult);"
         }]
       },
       Template_each: {
@@ -308,10 +308,10 @@ var section_obj = {
         egs: [{
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
-              |var templateResult = _.Template('str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult('Hello world'));"
+            |var templateResult = _.Template('str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult('Hello world'));"
         }]
       },
       template_each: {
@@ -320,10 +320,10 @@ var section_obj = {
         egs: [{
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
-              |var templateResult = _.template('Hello world', 'str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult);"
+            |var templateResult = _.template('Hello world', 'str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult);"
         }]
       },
       String_each: {
@@ -332,10 +332,10 @@ var section_obj = {
         egs: [{
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
-              |var templateResult = _.Template('str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult('Hello world'));"
+            |var templateResult = _.Template('str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult('Hello world'));"
         }]
       },
       string_each: {
@@ -344,10 +344,10 @@ var section_obj = {
         egs: [{
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
-              |var templateResult = _.template('Hello world', 'str', '\n\
-                  |--h1 <<str>>');\
-                  |console.log(templateResult); // <h1 >Hello world</h1>\
-                  |$('#mini_dom').html(templateResult);"
+            |var templateResult = _.template('Hello world', 'str', '\n\
+            |--h1 <<str>>');\
+            |console.log(templateResult); // <h1 >Hello world</h1>\
+            |$('#mini_dom').html(templateResult);"
         }]
       }
     }
@@ -361,9 +361,9 @@ var section_obj = {
         egs: [{
           ds: "`_.select`는 원하는 요소를 선택하는 함수입니다.",
           cd: "\
-              |var obj = {a: 1, b: 2, c: {c1: 10, c2: 20, c3: 30}};\
-                  |var sel = _.select(obj, 'c->$==10');\
-                  |console.log(sel);"
+            |var obj = {a: 1, b: 2, c: {c1: 10, c2: 20, c3: 30}};\
+            |var sel = _.select(obj, 'c->$==10');\
+            |console.log(sel);"
         }]
       }
     }
@@ -377,7 +377,7 @@ var section_obj = {
         egs: [{
           ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
           cd: "\
-              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
+            |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
         }]
       }
     }
@@ -391,7 +391,7 @@ var section_obj = {
         egs: [{
           ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
           cd: "\
-              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
+            |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
         }]
       }
     }
@@ -405,7 +405,7 @@ var section_obj = {
         egs: [{
           ds: "`_.identity`는 매개변수로 주어진 값과 동일한 값을 반환하는 함수입니다.",
           cd: "\
-              |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
+            |console.log(_.identity([1,2,3,4,5])) // [1,2,3,4,5]"
         }]
       }
     }
