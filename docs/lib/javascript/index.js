@@ -128,7 +128,7 @@ $(function() {
 
         $this.val(value.substring(0, start) + T + value.substring(end));
 
-        this.selectionStart = this.selectionEnd = start + T;
+        this.selectionStart = this.selectionEnd = start + 2;
         e.preventDefault();
       } else if (key_cache[13] && key_cache[17]) {
         $(e.currentTarget.closest('.inner_section')).find('.try').click();
