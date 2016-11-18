@@ -34,7 +34,7 @@ var sync = {
     data: ["Pipe", "pipe", "pipec", "pipea", "pipea2", "mr", "to_mr", "mr_cat", "all", "spread", "Indent", "Tap"]
   },
   partial: {
-    title: "_ __ ___",
+    title: "- -- ---",
     data: ["partial", "_", "__", "___"]
   },
   func: {
