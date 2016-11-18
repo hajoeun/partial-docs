@@ -30,21 +30,31 @@ body {
 }
 
 #logo > #underline {
-  padding-top: 3px;
+  padding-top: 2px;
+  height: 6.2px;
+}
+
+#_left, #_center, #_right {
+  float: left;
+  height: inherit;
+  border-radius: 1px;
 }
 
 #logo > #underline #_left {
-  float: left;
-  height: 6px;
-  width: 64px;
+  width: 20px;
+  margin-right: 4px;
   /*background-color: #e0c46c;*/
   background-color: #FFC66D;
 }
 
+#logo > #underline #_center {
+  width: 40px;
+  margin-right: 4px;
+  background-color: #FFC66D;
+}
+
 #logo > #underline #_right {
-  float: left;
-  height: 6px;
-  width: 64px;
+  width: 60px;
   /*background-color: #cb7832;*/
   background-color: #B179CD;
 }
