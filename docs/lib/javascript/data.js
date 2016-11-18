@@ -104,8 +104,8 @@ var section_obj = {
           ds: "`_.right`는...",
           cd: "\
               |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-              |var res = map10([1,2,3,4]);\
-              |console.log(res); // [11,12,13,14]"
+                |var res = map10([1,2,3,4]);\
+                |console.log(res); // [11,12,13,14]"
         }]
       },
       righta: {
@@ -115,11 +115,11 @@ var section_obj = {
           ds: "`_.righta`는...",
           cd: "\
               |var res = _.pipe([1,2,3,4],\
-              |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-              |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-              |--function(arg3) { return arg3 / 5; }\
-              |);\
-              |console.log(res); // 10"
+                |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                |--function(arg3) { return arg3 / 5; }\
+                |);\
+                |console.log(res); // 10"
         }]
       }
     }
@@ -134,8 +134,8 @@ var section_obj = {
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
           cd: "\
               |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-              |var res = map10([1,2,3,4]);\
-              |console.log(res); // [11,12,13,14]"
+                |var res = map10([1,2,3,4]);\
+                |console.log(res); // [11,12,13,14]"
         }]
       },
       pipe: {
@@ -145,11 +145,11 @@ var section_obj = {
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
           cd: "\
               |var res = _.pipe([1,2,3,4],\
-              |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-              |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-              |--function(arg3) { return arg3 / 5; }\
-              |);\
-              |console.log(res); // 10"
+                |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                |--function(arg3) { return arg3 / 5; }\
+                |);\
+                |console.log(res); // 10"
         }]
       }
     }
@@ -164,7 +164,7 @@ var section_obj = {
           ds: "`_.each`는 콜렉션을 순회하는 함수입니다.",
           cd: "\
               |var arr = [1,2,3,4,5,6,7];\
-              |_.each(arr, function(v) { console.log(v); });"
+                |_.each(arr, function(v) { console.log(v); });"
         }]
       },
       map: {
@@ -174,7 +174,7 @@ var section_obj = {
           ds: "`_.map`은 콜렉션을 순회하며 새로운 함수를 반환하는 함수입니다.",
           cd: "\
               |var res = _.map([1,2,3,4,5,6,7], function(v) { return v * 10; });\
-              |console.log(res); // [10,20,30,40,50,60,70]"
+                |console.log(res); // [10,20,30,40,50,60,70]"
         }]
       }
     }
