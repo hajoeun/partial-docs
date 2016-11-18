@@ -71,7 +71,7 @@ _.pipe(null,
 );
 
 function convert(str) {
-  return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<\<(.*)\>\>\>/g, '{{{$1}}}').replace(/\<\<(.*)\>\>/g, '{{$1}}')
+  return str.replace(/(--+)/g, function(m, u) { return u.replace(/--/g, '  '); }).replace(/\<\<\<(.*)\>\>\>/g, '{{{$1}}}').replace(/\<\<(.*)\>\>/g, '{{$1}}')
 }
 
 /* After document ready */
