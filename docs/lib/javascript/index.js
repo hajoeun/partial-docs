@@ -41,6 +41,7 @@ _.pipe(null,
       span#version 1.0\
       div#underline\
         div#_left\
+        div#_center\
         div#_right\
     div#listbar\
       div#search\
