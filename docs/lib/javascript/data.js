@@ -104,8 +104,8 @@ var section_obj = {
           ds: "`_.right`는...",
           cd: "\
               |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                |var res = map10([1,2,3,4]);\
-                |console.log(res); // [11,12,13,14]"
+                  |var res = map10([1,2,3,4]);\
+                  |console.log(res); // [11,12,13,14]"
         }]
       },
       righta: {
@@ -115,11 +115,11 @@ var section_obj = {
           ds: "`_.righta`는...",
           cd: "\
               |var res = _.pipe([1,2,3,4],\
-                |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                |--function(arg3) { return arg3 / 5; }\
-                |);\
-                |console.log(res); // 10"
+                  |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                  |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                  |--function(arg3) { return arg3 / 5; }\
+                  |);\
+                  |console.log(res); // 10"
         }]
       }
     }
@@ -134,8 +134,8 @@ var section_obj = {
           ds: "`_.partial`은 함수에 사용될 인자를 미리 지정해두는 함수입니다.",
           cd: "\
               |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                |var res = map10([1,2,3,4]);\
-                |console.log(res); // [11,12,13,14]"
+                  |var res = map10([1,2,3,4]);\
+                  |console.log(res); // [11,12,13,14]"
         }]
       },
       pipe: {
@@ -145,11 +145,11 @@ var section_obj = {
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
           cd: "\
               |var res = _.pipe([1,2,3,4],\
-                |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                |--function(arg3) { return arg3 / 5; }\
-                |);\
-                |console.log(res); // 10"
+                  |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                  |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                  |--function(arg3) { return arg3 / 5; }\
+                  |);\
+                  |console.log(res); // 10"
         }]
       }
     }
