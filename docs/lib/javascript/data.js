@@ -31,11 +31,15 @@ var undef = ["Err", "callback", "cb", "this","mr", "to_mr", "is_mr", "val",
 var sync = {
   pipe: {
     title: "Pipe",
-    data: ["right", "righta", "Pipe", "pipe", "pipec", "pipea", "pipea2", "all", "spread", "Indent"]
+    data: ["Pipe", "pipe", "pipec", "pipea", "pipea2", "mr", "to_mr", "mr_cat", "all", "spread", "Indent", "Tap"]
+  },
+  partial: {
+    title: "Partial",
+    data: ["partial", "_", "__", "___"]
   },
   func: {
     title: "Function",
-    data: ["partial", "memoize", "delay", "defer", "once",  "after", "before", "negate"]
+    data: ["memoize", "delay", "defer", "once",  "after", "before", "negate", "right", "righta"]
   },
   coll: {
     title: "Collection",
@@ -75,6 +79,10 @@ var sync = {
   box: {
     title: "Box",
     data: ["push"]
+  },
+  async: {
+    title: "Async",
+    data: ["async.Pipe", "cb", "async", "Collection"]
   }
 };
 
@@ -83,8 +91,6 @@ var sync = {
  "Template", "Template$", "template", "template$", "String", "String$", "string", "string$",
  "Template.each", "template.each", "String.each", "string.each"];
 */
-
-
 
 /* Sections Data */
 var section_obj = {
@@ -108,11 +114,11 @@ var section_obj = {
         egs: [{
           ds: "`_.righta`는...",
           cd: "\
-               |var res = _.pipe([1,2,3,4],\
-                  |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                  |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                  |____function(arg3) { return arg3 / 5; }\
-                  |__)\
+              |var res = _.pipe([1,2,3,4],\
+                  |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                  |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                  |--function(arg3) { return arg3 / 5; }\
+                  |);\
                   |console.log(res); // 10"
         }]
       }
@@ -138,11 +144,11 @@ var section_obj = {
         egs: [{
           ds: "`_.pipe`는 함수를 연속으로 실행하는 함수입니다.",
           cd: "\
-               |var res = _.pipe([1,2,3,4],\
-                  |____function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
-                  |____function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
-                  |____function(arg3) { return arg3 / 5; }\
-                  |__)\
+              |var res = _.pipe([1,2,3,4],\
+                  |--function(arg1) { return _.map(arg1, function(v) { return v + 10; }); },\
+                  |--function(arg2) { return _.reduce(arg2, function(m, v) { return m + v; }); },\
+                  |--function(arg3) { return arg3 / 5; }\
+                  |);\
                   |console.log(res); // 10"
         }]
       }
@@ -255,7 +261,7 @@ var section_obj = {
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
               |var templateResult = _.Template('str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult('Hello world'));"
         }]
@@ -267,7 +273,7 @@ var section_obj = {
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
               |var templateResult = _.template('Hello world', 'str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult);"
         }]
@@ -279,7 +285,7 @@ var section_obj = {
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
               |var templateResult = _.Template('str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult('Hello world'));"
         }]
@@ -291,7 +297,7 @@ var section_obj = {
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
               |var templateResult = _.template('Hello world', 'str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult);"
         }]
@@ -303,7 +309,7 @@ var section_obj = {
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
               |var templateResult = _.Template('str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult('Hello world'));"
         }]
@@ -315,7 +321,7 @@ var section_obj = {
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
               |var templateResult = _.template('Hello world', 'str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult);"
         }]
@@ -327,7 +333,7 @@ var section_obj = {
           ds: "`_.Template`는 HTML 코드를 만들기 위한 템플릿 함수를 반환하는 함수입니다.",
           cd: "\
               |var templateResult = _.Template('str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult('Hello world')); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult('Hello world'));"
         }]
@@ -339,7 +345,7 @@ var section_obj = {
           ds: "`_.template`는 HTML 코드를 만드는 템플릿 함수 입니다.",
           cd: "\
               |var templateResult = _.template('Hello world', 'str', '\n\
-                  |__h1 <<str>>');\
+                  |--h1 <<str>>');\
                   |console.log(templateResult); // <h1 >Hello world</h1>\
                   |$('#mini_dom').html(templateResult);"
         }]
@@ -405,6 +411,3 @@ var section_obj = {
     }
   }
 };
-
-
-

@@ -72,6 +72,10 @@ body {
   list-style: none;
 }
 
+#group_list > li {
+  margin-top: 10px;
+}
+
 #listbar > #search {
   margin: 0;
   padding: 0;

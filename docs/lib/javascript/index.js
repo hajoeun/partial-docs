@@ -1,7 +1,7 @@
 /* General functions */
 var make_func_list = _.T.each('d, k, l, t', '\
   a[href=#{{t}}_{{d}}]\
-    li.fn_li[data=_.{{d}}] _.{{d}}');
+    li.fn_li[data=_.{{d}}] {{d}}');
 var make_group_list = _.T.each('obj', '\
   li.gr_li[data={{obj.title}}]\
     i.fa.fa-minus-square-o\
@@ -72,7 +72,7 @@ _.pipe(null,
 );
 
 function convert(str) {
-  return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<\<(.*)\>\>\>/g, '{{{$1}}}').replace(/\<\<(.*)\>\>/g, '{{$1}}')
+  return str.replace(/(--+)/g, function(m, u) { return u.replace(/--/g, '  '); }).replace(/\<\<\<(.*)\>\>\>/g, '{{{$1}}}').replace(/\<\<(.*)\>\>/g, '{{$1}}')
 }
 
 /* After document ready */
