@@ -98,14 +98,20 @@ var section_obj = {
     title: 'Pipe',
     funcs: {
       right: {
-        title: 'right',
-        usage: '_.right(func, arg1, arg2, ...)',
+        title: 'Pipe',
+        usage: '_.Pipe(func1, func2, func3, ...)',
         egs: [{
-          ds: "`_.right`는...",
+          ds: "`_.Pipe`는 함수들을 모아서 하나의 함수로 합성하는 함수입니다. 왼쪽에서부터 오른쪽으로 실행 됩니다.",
           cd: "\
-              |var map10 = _.partial(_.map, _, function(v) { return v + 10; })\
-                  |var res = map10([1,2,3,4]);\
-                  |console.log(res); // [11,12,13,14]"
+              |function sum(a, b) {\
+                  |--return a + b;\
+                  |}\
+                  |function square(a) {\
+                  |--return a * a;\
+                  |}\
+                  |var f1 = _.Pipe(sum, square, square);\
+                  |console.log( f1(1, 2) );\
+                  |// 81"
         }]
       },
       righta: {
