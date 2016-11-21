@@ -5452,7 +5452,13 @@
     if (prev && prev.detach) prev.detach(cm, next);
     if (next.attach) next.attach(cm, prev || null);
   });
-  option("extraKeys", null);
+  // option("extraKeys", null);
+  option("extraKeys", {
+    Tab: function(cm) {
+      var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+      cm.replaceSelection(spaces);
+    }
+  });
 
   option("lineWrapping", false, wrappingChanged, true);
   option("gutters", [], function(cm) {
