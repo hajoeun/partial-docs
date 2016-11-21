@@ -43,7 +43,6 @@ body {
 #logo > #underline #_left {
   width: 20px;
   margin-right: 4px;
-  /*background-color: #e0c46c;*/
   background-color: #FFC66D;
 }
 
@@ -55,7 +54,6 @@ body {
 
 #logo > #underline #_right {
   width: 60px;
-  /*background-color: #cb7832;*/
   background-color: #B179CD;
 }
 
