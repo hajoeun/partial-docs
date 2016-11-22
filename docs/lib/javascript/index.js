@@ -23,10 +23,11 @@ var reduce_section_data = function(data) {
                   small '+ func.usage
           + _.reduce(func.egs, function(str3, eg) {
             return str3 + '\
-                button.try\
-                  i.fa.fa-play\
-                p '+ eg.ds + (eg.cd ? '\
-                textarea.input.code    '+ eg.cd : '')
+                div.body\
+                  button.try\
+                    i.fa.fa-play\
+                  p '+ eg.ds + (eg.cd ? '\
+                  textarea.input.code    '+ eg.cd : '')
           }, '');
       }, '');
   }, '').replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
