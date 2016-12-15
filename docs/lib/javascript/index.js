@@ -165,5 +165,5 @@ function update_section_list(str) {
   });
 
   if (('marpple' == str) && open_marpple) open_marpple();
-  _.some(alive) ? $('#no_result').hide() : $('#no_result').show();
+  _.some(alive) ? $('#no_result:visible').hide() : $('#no_result:hidden').show();
 }
