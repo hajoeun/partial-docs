@@ -229,7 +229,7 @@ ul.func_list .fn_li {
 }
 
 .inner_section > .func_title {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .inner_section code {
@@ -240,7 +240,7 @@ ul.func_list .fn_li {
 }
 
 .inner_section small {
-  font-size: 60%;
+  font-size: 70%;
   padding-left: 10px;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
 }
@@ -271,6 +271,13 @@ button.try:hover {
   background-color: limegreen;
   box-shadow: 3px 3px 10px #ccc;
 }
+.body {
+  padding-bottom: 10px;
+}
+.body p {
+  width: 90%;
+}
+
 
 
 /* Responsive Style */
