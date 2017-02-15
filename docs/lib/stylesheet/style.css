@@ -30,21 +30,31 @@ body {
 }
 
 #logo > #underline {
-  padding-top: 3px;
+  padding-top: 2px;
+  height: 6.2px;
+}
+
+#_left, #_center, #_right {
+  float: left;
+  height: inherit;
+  border-radius: 1px;
 }
 
 #logo > #underline #_left {
-  float: left;
-  height: 5px;
-  width: 64px;
-  background-color: #e0c46c;
+  width: 20px;
+  margin-right: 4px;
+  background-color: #FFC66D;
+}
+
+#logo > #underline #_center {
+  width: 40px;
+  margin-right: 4px;
+  background-color: #FFC66D;
 }
 
 #logo > #underline #_right {
-  float: left;
-  height: 5px;
-  width: 64px;
-  background-color: #cb7832;
+  width: 60px;
+  background-color: #B179CD;
 }
 
 #logo #version {
@@ -58,6 +68,10 @@ body {
 
 #listbar ul, #listbar li{
   list-style: none;
+}
+
+#group_list > li {
+  margin-top: 10px;
 }
 
 #listbar > #search {
@@ -103,7 +117,7 @@ ul.func_list .fn_li {
 }
 
 #listbar a:hover {
-  font-weight: bold;
+  text-decoration: underline;
 }
 
 #no_result {
@@ -133,7 +147,7 @@ ul.func_list .fn_li {
 
 #about a:hover {
   text-decoration: underline;
-  color: #cb7832;
+  color: #cb7832 !important;
 }
 
 #about a:visited {
@@ -215,7 +229,7 @@ ul.func_list .fn_li {
 }
 
 .inner_section > .func_title {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .inner_section code {
@@ -226,7 +240,7 @@ ul.func_list .fn_li {
 }
 
 .inner_section small {
-  font-size: 60%;
+  font-size: 70%;
   padding-left: 10px;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
 }
@@ -257,6 +271,13 @@ button.try:hover {
   background-color: limegreen;
   box-shadow: 3px 3px 10px #ccc;
 }
+.body {
+  padding-bottom: 10px;
+}
+.body p {
+  width: 90%;
+}
+
 
 
 /* Responsive Style */

@@ -7,7 +7,7 @@ var make_group_list = _.t.each('obj', '\
     i.fa.fa-minus-square-o\
     a[href=#{{obj.title}}].gr_title {{obj.title}}\
     ul.func_list\
-      {{make_func_list(obj.data)}}');
+      {{make_func_list(obj.data, obj.title)}}');
 var reduce_section_data = function(data) {
   return _.reduce(_.keys(data), function(memo, key) {
     var section_values = _.values(data[key]);
@@ -18,15 +18,16 @@ var reduce_section_data = function(data) {
               p.gr_title '+ group
       + _.reduce(funcs, function(str2, func) {
         return str2 + '\
-              div.inner_section[id=' + func.title +']\
+              div.inner_section[id=' + group + '_' + func.title + ']\
                 p.func_title ' + func.title+' \
                   small '+ func.usage
           + _.reduce(func.egs, function(str3, eg) {
             return str3 + '\
-                button.try\
-                  i.fa.fa-play\
-                p '+ eg.ds + (eg.cd ? '\
-                textarea.input.code    '+ eg.cd : '')
+                div.body\
+                  button.try\
+                    i.fa.fa-play\
+                  p '+ eg.ds + (eg.cd ? '\
+                  textarea.input.code    '+ eg.cd : '')
           }, '');
       }, '');
   }, '').replace(/`(.*?)`/g, '<code>$1</code>').replace(/(\n)/g, '\\$1');
@@ -41,6 +42,7 @@ _.go(null,
       span#version 1.0\
       div#underline\
         div#_left\
+        div#_center\
         div#_right\
     div#listbar\
       div#search\
@@ -73,8 +75,11 @@ _.go(null,
   // _(_.method, _, 'appendTo', $('body'))
 );
 
-function _convert(str) { return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<(.*)\>\>/g, '{{$1}}') }
+function _convert(str) {
+  return str.replace(/(--+)/g, function(m, u) { return u.replace(/--/g, '  '); }).replace(/\<\<\<(.*)\>\>\>/g, '{{{$1}}}').replace(/\<\<(.*)\>\>/g, '{{$1}}')
+}
 
+/* After document ready */
 $(function() {
   $('#no_result:visible').hide();
   $('#mini_dom:visible').hide();
@@ -115,25 +120,11 @@ $(function() {
   (function key_event() {
     var key_cache = {};
     $('.inner_section .code textarea').keydown(function(e) {
-      var T = "  ";
-
       key_cache[e.which] = true;
-      if (key_cache[9]) { // tab was pressed
-        var start = this.selectionStart;
-        var end = this.selectionEnd;
-
-        var $this = $(this);
-        var value = $this.val();
-
-        $this.val(value.substring(0, start) + T + value.substring(end));
-
-        this.selectionStart = this.selectionEnd = start + T;
-        e.preventDefault();
-      } else if (key_cache[13] && key_cache[17]) {
+      if (key_cache[13] && key_cache[17]) {
         $(e.currentTarget.closest('.inner_section')).find('.try').click();
         delete key_cache[13]; delete key_cache[17];
       }
-
     });
     $('.s_test > .data textarea, .s_test > .code textarea').keyup(function(e) { delete key_cache[e.which]; });
     $(document).keyup(function(e) { delete key_cache[e.which]; });
@@ -178,5 +169,5 @@ function update_section_list(str) {
   });
 
   if (('marpple' == str) && open_marpple) open_marpple();
-  _.some(alive) ? $('#no_result').hide() : $('#no_result').show();
+  _.some(alive) ? $('#no_result:visible').hide() : $('#no_result:hidden').show();
 }
