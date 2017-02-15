@@ -1,8 +1,8 @@
 /* General functions */
-var make_func_list = _.T.each('d', '\
+var make_func_list = _.t.each('d', '\
   a[href=#{{d}}]\
     li.fn_li[data=_.{{d}}] _.{{d}}');
-var make_group_list = _.T.each('obj', '\
+var make_group_list = _.t.each('obj', '\
   li.gr_li[data={{obj.title}}]\
     i.fa.fa-minus-square-o\
     a[href=#{{obj.title}}].gr_title {{obj.title}}\
@@ -33,8 +33,8 @@ var reduce_section_data = function(data) {
 };
 
 /* HTML Rendering */
-_.pipe(null,
-  _.T('', '\
+_.go(null,
+  _.t('', '\
   div#sidebar\
     div#logo\
       span#title Partial.js \
@@ -59,18 +59,21 @@ _.pipe(null,
           a[href=""] Book\
   div#container\
     div#section_container\
-      {{_.T("", reduce_section_data(section_obj))()}}\
+      {{_.t("", reduce_section_data(section_obj))()}}\
     div#result_container\
       div#result_section\
         pre#console.javascript console result\
         div#mini_dom.miniDom.mini_dom dom result\
   '),
-  convert,
+  _convert,
   $,
-  _(_.method, _, 'appendTo', $('body'))
+  function(jq_elem) {
+    jq_elem.appendTo($('body'));
+  }
+  // _(_.method, _, 'appendTo', $('body'))
 );
 
-function convert(str) { return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<(.*)\>\>/g, '{{$1}}') }
+function _convert(str) { return str.replace(/(__+)/g, function(m, u) { return u.replace(/__/g, '  '); }).replace(/\<\<(.*)\>\>/g, '{{$1}}') }
 
 $(function() {
   $('#no_result:visible').hide();
